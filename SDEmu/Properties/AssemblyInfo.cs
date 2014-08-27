@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SDEmu")]
-[assembly: AssemblyDescription("Serial Device Emulator http://code.google.com/p/sdemu")]
+[assembly: AssemblyDescription("Serial Device Emulator https://github.com/junian/SerialDeviceEmu")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Junian.Net")]
 [assembly: AssemblyProduct("SDEmu")]
-[assembly: AssemblyCopyright("Copyright ©  2011")]
+[assembly: AssemblyCopyright("Copyright ©  2011 - 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

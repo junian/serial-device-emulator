@@ -169,7 +169,28 @@ namespace Net.Junian.SDEmu
         {
             try
             {
-                serialPort.Write(message);
+            	if(radString.Checked)
+            		serialPort.Write(
+            			string.Format(
+            				"{0}{1}",
+            				message,
+            				chkNewLine.Checked == true ? Environment.NewLine : string.Empty));
+            	else if(radHexadecimal.Checked)
+            	{
+            		string[] hexValues = txtMessage.Text.Split(' ');
+            		var bytes = new List<byte>();
+            		foreach(var hex in hexValues)
+            		{
+            			var hexClean = hex.Trim();
+            			if(!string.IsNullOrEmpty(hexClean))
+            			{
+            				byte byteValue = Convert.ToByte(hexClean, 16);
+            				bytes.Add(byteValue);
+            			}
+            		}
+            		var byteArr = bytes.ToArray();
+            		serialPort.Write(byteArr, 0, byteArr.Length);
+            	}
                 Log.Warn("[SEND] " + message);
                 txtLog.AppendText(FormatLogMessage("SEND", message));
             }
@@ -281,8 +302,8 @@ namespace Net.Junian.SDEmu
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendMessage(txtMessage.Text);
-            txtMessage.Text = "";
             txtMessage.Focus();
+            txtMessage.SelectAll();
         }
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)

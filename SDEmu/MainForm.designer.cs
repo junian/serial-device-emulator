@@ -39,14 +39,15 @@
         	this.alwaysOnTopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        	this.groupBox1 = new System.Windows.Forms.GroupBox();
-        	this.lblComRun = new System.Windows.Forms.Label();
-        	this.btnRun = new System.Windows.Forms.Button();
+        	this.groupBoxDeviceSettings = new System.Windows.Forms.GroupBox();
         	this.btnRefresh = new System.Windows.Forms.Button();
         	this.label1 = new System.Windows.Forms.Label();
         	this.cmbPortNames = new System.Windows.Forms.ComboBox();
+        	this.lblComRun = new System.Windows.Forms.Label();
+        	this.btnRun = new System.Windows.Forms.Button();
         	this.serialPort = new System.IO.Ports.SerialPort(this.components);
-        	this.groupBox2 = new System.Windows.Forms.GroupBox();
+        	this.groupBoxDeviceActivities = new System.Windows.Forms.GroupBox();
+        	this.btnTestBot = new System.Windows.Forms.Button();
         	this.radHexadecimal = new System.Windows.Forms.RadioButton();
         	this.radString = new System.Windows.Forms.RadioButton();
         	this.chkNewLine = new System.Windows.Forms.CheckBox();
@@ -56,8 +57,8 @@
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
         	this.mnuMain.SuspendLayout();
-        	this.groupBox1.SuspendLayout();
-        	this.groupBox2.SuspendLayout();
+        	this.groupBoxDeviceSettings.SuspendLayout();
+        	this.groupBoxDeviceActivities.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// mnuMain
@@ -68,7 +69,7 @@
         	        	        	this.helpToolStripMenuItem});
         	this.mnuMain.Location = new System.Drawing.Point(0, 0);
         	this.mnuMain.Name = "mnuMain";
-        	this.mnuMain.Size = new System.Drawing.Size(467, 24);
+        	this.mnuMain.Size = new System.Drawing.Size(494, 24);
         	this.mnuMain.TabIndex = 0;
         	this.mnuMain.Text = "menuStrip1";
         	// 
@@ -133,44 +134,21 @@
         	this.aboutToolStripMenuItem.Text = "&About";
         	this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
         	// 
-        	// groupBox1
+        	// groupBoxDeviceSettings
         	// 
-        	this.groupBox1.Controls.Add(this.lblComRun);
-        	this.groupBox1.Controls.Add(this.btnRun);
-        	this.groupBox1.Controls.Add(this.btnRefresh);
-        	this.groupBox1.Controls.Add(this.label1);
-        	this.groupBox1.Controls.Add(this.cmbPortNames);
-        	this.groupBox1.Location = new System.Drawing.Point(12, 36);
-        	this.groupBox1.Name = "groupBox1";
-        	this.groupBox1.Size = new System.Drawing.Size(442, 64);
-        	this.groupBox1.TabIndex = 8;
-        	this.groupBox1.TabStop = false;
-        	this.groupBox1.Text = "Device Settings";
-        	// 
-        	// lblComRun
-        	// 
-        	this.lblComRun.AutoSize = true;
-        	this.lblComRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.lblComRun.Location = new System.Drawing.Point(256, 24);
-        	this.lblComRun.Name = "lblComRun";
-        	this.lblComRun.Size = new System.Drawing.Size(85, 16);
-        	this.lblComRun.TabIndex = 12;
-        	this.lblComRun.Text = "Serial Port:";
-        	this.lblComRun.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-        	// 
-        	// btnRun
-        	// 
-        	this.btnRun.Location = new System.Drawing.Point(351, 13);
-        	this.btnRun.Name = "btnRun";
-        	this.btnRun.Size = new System.Drawing.Size(75, 39);
-        	this.btnRun.TabIndex = 11;
-        	this.btnRun.Text = "&Run";
-        	this.btnRun.UseVisualStyleBackColor = true;
-        	this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+        	this.groupBoxDeviceSettings.Controls.Add(this.btnRefresh);
+        	this.groupBoxDeviceSettings.Controls.Add(this.label1);
+        	this.groupBoxDeviceSettings.Controls.Add(this.cmbPortNames);
+        	this.groupBoxDeviceSettings.Location = new System.Drawing.Point(12, 36);
+        	this.groupBoxDeviceSettings.Name = "groupBoxDeviceSettings";
+        	this.groupBoxDeviceSettings.Size = new System.Drawing.Size(292, 64);
+        	this.groupBoxDeviceSettings.TabIndex = 8;
+        	this.groupBoxDeviceSettings.TabStop = false;
+        	this.groupBoxDeviceSettings.Text = "Device Settings";
         	// 
         	// btnRefresh
         	// 
-        	this.btnRefresh.Location = new System.Drawing.Point(175, 21);
+        	this.btnRefresh.Location = new System.Drawing.Point(197, 21);
         	this.btnRefresh.Name = "btnRefresh";
         	this.btnRefresh.Size = new System.Drawing.Size(75, 23);
         	this.btnRefresh.TabIndex = 10;
@@ -194,29 +172,63 @@
         	this.cmbPortNames.FormattingEnabled = true;
         	this.cmbPortNames.Location = new System.Drawing.Point(83, 23);
         	this.cmbPortNames.Name = "cmbPortNames";
-        	this.cmbPortNames.Size = new System.Drawing.Size(86, 21);
+        	this.cmbPortNames.Size = new System.Drawing.Size(108, 21);
         	this.cmbPortNames.TabIndex = 8;
         	this.toolTip.SetToolTip(this.cmbPortNames, "Port names");
+        	// 
+        	// lblComRun
+        	// 
+        	this.lblComRun.AutoSize = true;
+        	this.lblComRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.lblComRun.Location = new System.Drawing.Point(391, 57);
+        	this.lblComRun.Name = "lblComRun";
+        	this.lblComRun.Size = new System.Drawing.Size(85, 16);
+        	this.lblComRun.TabIndex = 12;
+        	this.lblComRun.Text = "Serial Port:";
+        	this.lblComRun.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+        	// 
+        	// btnRun
+        	// 
+        	this.btnRun.Location = new System.Drawing.Point(310, 36);
+        	this.btnRun.Name = "btnRun";
+        	this.btnRun.Size = new System.Drawing.Size(75, 64);
+        	this.btnRun.TabIndex = 11;
+        	this.btnRun.Text = "&Run";
+        	this.btnRun.UseVisualStyleBackColor = true;
+        	this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
         	// 
         	// serialPort
         	// 
         	this.serialPort.ErrorReceived += new System.IO.Ports.SerialErrorReceivedEventHandler(this.serialPort_ErrorReceived);
         	this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
         	// 
-        	// groupBox2
+        	// groupBoxDeviceActivities
         	// 
-        	this.groupBox2.Controls.Add(this.radHexadecimal);
-        	this.groupBox2.Controls.Add(this.radString);
-        	this.groupBox2.Controls.Add(this.chkNewLine);
-        	this.groupBox2.Controls.Add(this.txtLog);
-        	this.groupBox2.Controls.Add(this.btnSend);
-        	this.groupBox2.Controls.Add(this.txtMessage);
-        	this.groupBox2.Location = new System.Drawing.Point(12, 106);
-        	this.groupBox2.Name = "groupBox2";
-        	this.groupBox2.Size = new System.Drawing.Size(442, 326);
-        	this.groupBox2.TabIndex = 9;
-        	this.groupBox2.TabStop = false;
-        	this.groupBox2.Text = "Device Activities";
+        	this.groupBoxDeviceActivities.Controls.Add(this.btnTestBot);
+        	this.groupBoxDeviceActivities.Controls.Add(this.radHexadecimal);
+        	this.groupBoxDeviceActivities.Controls.Add(this.radString);
+        	this.groupBoxDeviceActivities.Controls.Add(this.chkNewLine);
+        	this.groupBoxDeviceActivities.Controls.Add(this.txtLog);
+        	this.groupBoxDeviceActivities.Controls.Add(this.btnSend);
+        	this.groupBoxDeviceActivities.Controls.Add(this.txtMessage);
+        	this.groupBoxDeviceActivities.Enabled = false;
+        	this.groupBoxDeviceActivities.Location = new System.Drawing.Point(12, 106);
+        	this.groupBoxDeviceActivities.Name = "groupBoxDeviceActivities";
+        	this.groupBoxDeviceActivities.Size = new System.Drawing.Size(470, 353);
+        	this.groupBoxDeviceActivities.TabIndex = 9;
+        	this.groupBoxDeviceActivities.TabStop = false;
+        	this.groupBoxDeviceActivities.Text = "Device Activities";
+        	// 
+        	// btnTestBot
+        	// 
+        	this.btnTestBot.Location = new System.Drawing.Point(389, 46);
+        	this.btnTestBot.Name = "btnTestBot";
+        	this.btnTestBot.Size = new System.Drawing.Size(75, 23);
+        	this.btnTestBot.TabIndex = 19;
+        	this.btnTestBot.Text = "Test &Bot";
+        	this.toolTip.SetToolTip(this.btnTestBot, "Click to send message");
+        	this.btnTestBot.UseVisualStyleBackColor = true;
+        	this.btnTestBot.Click += new System.EventHandler(this.BtnTestBotClick);
         	// 
         	// radHexadecimal
         	// 
@@ -240,12 +252,13 @@
         	// 
         	// chkNewLine
         	// 
-        	this.chkNewLine.Location = new System.Drawing.Point(315, 46);
+        	this.chkNewLine.BackColor = System.Drawing.Color.Transparent;
+        	this.chkNewLine.Location = new System.Drawing.Point(152, 18);
         	this.chkNewLine.Name = "chkNewLine";
-        	this.chkNewLine.Size = new System.Drawing.Size(40, 24);
+        	this.chkNewLine.Size = new System.Drawing.Size(199, 24);
         	this.chkNewLine.TabIndex = 15;
-        	this.chkNewLine.Text = "\\n";
-        	this.chkNewLine.UseVisualStyleBackColor = true;
+        	this.chkNewLine.Text = "Add new line at the end of message";
+        	this.chkNewLine.UseVisualStyleBackColor = false;
         	// 
         	// txtLog
         	// 
@@ -254,14 +267,13 @@
         	this.txtLog.Name = "txtLog";
         	this.txtLog.ReadOnly = true;
         	this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-        	this.txtLog.Size = new System.Drawing.Size(430, 245);
+        	this.txtLog.Size = new System.Drawing.Size(458, 272);
         	this.txtLog.TabIndex = 14;
         	this.toolTip.SetToolTip(this.txtLog, "COM Device Activites Log");
         	// 
         	// btnSend
         	// 
-        	this.btnSend.Enabled = false;
-        	this.btnSend.Location = new System.Drawing.Point(361, 46);
+        	this.btnSend.Location = new System.Drawing.Point(308, 46);
         	this.btnSend.Name = "btnSend";
         	this.btnSend.Size = new System.Drawing.Size(75, 23);
         	this.btnSend.TabIndex = 13;
@@ -272,10 +284,9 @@
         	// 
         	// txtMessage
         	// 
-        	this.txtMessage.Enabled = false;
         	this.txtMessage.Location = new System.Drawing.Point(6, 48);
         	this.txtMessage.Name = "txtMessage";
-        	this.txtMessage.Size = new System.Drawing.Size(303, 20);
+        	this.txtMessage.Size = new System.Drawing.Size(292, 20);
         	this.txtMessage.TabIndex = 12;
         	this.toolTip.SetToolTip(this.txtMessage, "Message to send");
         	// 
@@ -290,9 +301,11 @@
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(467, 444);
-        	this.Controls.Add(this.groupBox2);
-        	this.Controls.Add(this.groupBox1);
+        	this.ClientSize = new System.Drawing.Size(494, 471);
+        	this.Controls.Add(this.lblComRun);
+        	this.Controls.Add(this.groupBoxDeviceActivities);
+        	this.Controls.Add(this.btnRun);
+        	this.Controls.Add(this.groupBoxDeviceSettings);
         	this.Controls.Add(this.mnuMain);
         	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -306,13 +319,14 @@
         	this.Load += new System.EventHandler(this.MainForm_Load);
         	this.mnuMain.ResumeLayout(false);
         	this.mnuMain.PerformLayout();
-        	this.groupBox1.ResumeLayout(false);
-        	this.groupBox1.PerformLayout();
-        	this.groupBox2.ResumeLayout(false);
-        	this.groupBox2.PerformLayout();
+        	this.groupBoxDeviceSettings.ResumeLayout(false);
+        	this.groupBoxDeviceSettings.PerformLayout();
+        	this.groupBoxDeviceActivities.ResumeLayout(false);
+        	this.groupBoxDeviceActivities.PerformLayout();
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.Button btnTestBot;
         private System.Windows.Forms.RadioButton radString;
         private System.Windows.Forms.RadioButton radHexadecimal;
         private System.Windows.Forms.CheckBox chkNewLine;
@@ -327,14 +341,14 @@
         private System.Windows.Forms.ToolStripMenuItem alwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxDeviceSettings;
         private System.Windows.Forms.Label lblComRun;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbPortNames;
         private System.IO.Ports.SerialPort serialPort;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxDeviceActivities;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox txtMessage;

@@ -99,7 +99,7 @@ namespace Net.Junian.SDEmu
             if (!Compile())
                 MessageBox.Show("compile error!!!");
             else
-                MessageBox.Show(sdemuScript.GetResponse("aa"));
+                MessageBox.Show(sdemuScript.GetResponse("great"));
         }
 
         private void DeviceBot_FormClosing(object sender, FormClosingEventArgs e)

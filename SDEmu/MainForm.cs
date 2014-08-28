@@ -68,7 +68,7 @@ namespace Net.Junian.SDEmu
         }
 
         /// <summary>
-        /// open serial port connection
+        /// Open serial port connection
         /// </summary>
         /// <param name="portName"></param>
         /// <returns></returns>
@@ -108,10 +108,12 @@ namespace Net.Junian.SDEmu
         /// </summary>
         private void RunModeControlState()
         {
-            txtMessage.Enabled = true;
-            btnSend.Enabled = true;
-            cmbPortNames.Enabled = false;
-            btnRefresh.Enabled = false;
+            //txtMessage.Enabled = true;
+            //btnSend.Enabled = true;
+            //cmbPortNames.Enabled = false;
+            //btnRefresh.Enabled = false;
+            groupBoxDeviceSettings.Enabled = false;
+            groupBoxDeviceActivities.Enabled = true;
         }
 
         /// <summary>
@@ -120,10 +122,12 @@ namespace Net.Junian.SDEmu
         private void IdleModeControlState()
         {
             txtMessage.Text = "";
-            txtMessage.Enabled = false;
-            btnSend.Enabled = false;
-            cmbPortNames.Enabled = true;
-            btnRefresh.Enabled = true;
+            //txtMessage.Enabled = false;
+            //btnSend.Enabled = false;
+            //cmbPortNames.Enabled = true;
+            //btnRefresh.Enabled = true;
+            groupBoxDeviceSettings.Enabled = true;
+            groupBoxDeviceActivities.Enabled = false;
         }
 
         /// <summary>
@@ -165,7 +169,7 @@ namespace Net.Junian.SDEmu
             }
         }
 
-        private void SendMessage(String message)
+        public void SendMessage(String message)
         {
             try
             {
@@ -177,16 +181,18 @@ namespace Net.Junian.SDEmu
             				chkNewLine.Checked == true ? Environment.NewLine : string.Empty));
             	else if(radHexadecimal.Checked)
             	{
-            		string[] hexValues = txtMessage.Text.Split(' ');
+            		var sb = new StringBuilder();
+            		var hexStr = message.ToUpper();
+            		foreach(var c in hexStr)
+            			if((c >= '0' && c<='9') || (c>='A' && c<='F'))
+            				sb.Append(c);
+            		if((sb.Length & 1) == 1)
+            			sb.Insert(0, '0');
+            		message = hexStr = sb.ToString();
             		var bytes = new List<byte>();
-            		foreach(var hex in hexValues)
+            		for(int i=0;i<hexStr.Length;i+=2)
             		{
-            			var hexClean = hex.Trim();
-            			if(!string.IsNullOrEmpty(hexClean))
-            			{
-            				byte byteValue = Convert.ToByte(hexClean, 16);
-            				bytes.Add(byteValue);
-            			}
+            			bytes.Add( Convert.ToByte(new StringBuilder().Append(hexStr[i]).Append(hexStr[i+1]).ToString(), 16) );
             		}
             		var byteArr = bytes.ToArray();
             		serialPort.Write(byteArr, 0, byteArr.Length);
@@ -321,6 +327,13 @@ namespace Net.Junian.SDEmu
         {
             new DeviceBot().ShowDialog(this);
         }
-
+        
+        void BtnTestBotClick(object sender, EventArgs e)
+        {
+        	if(!Settings.Default.DeviceBotEnabled)
+        		return;
+        	var message = txtMessage.Text;
+			this.Invoke(dataReceived, message);        	
+        }
     }
 }

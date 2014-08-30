@@ -17,7 +17,7 @@ namespace Net.Junian.SDEmu
         #region Private Attributes
 
         private static log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private delegate void DataReceived(String message);
+        private delegate void DataReceived(byte[] message);
         private DataReceived dataReceived;
 
         #endregion
@@ -108,10 +108,6 @@ namespace Net.Junian.SDEmu
         /// </summary>
         private void RunModeControlState()
         {
-            //txtMessage.Enabled = true;
-            //btnSend.Enabled = true;
-            //cmbPortNames.Enabled = false;
-            //btnRefresh.Enabled = false;
             groupBoxDeviceSettings.Enabled = false;
             groupBoxDeviceActivities.Enabled = true;
         }
@@ -122,10 +118,6 @@ namespace Net.Junian.SDEmu
         private void IdleModeControlState()
         {
             txtMessage.Text = "";
-            //txtMessage.Enabled = false;
-            //btnSend.Enabled = false;
-            //cmbPortNames.Enabled = true;
-            //btnRefresh.Enabled = true;
             groupBoxDeviceSettings.Enabled = true;
             groupBoxDeviceActivities.Enabled = false;
         }
@@ -156,8 +148,9 @@ namespace Net.Junian.SDEmu
             notifyIcon.ShowBalloonTip(250);
         }
 
-        private void ViewReceivedMessage(String message)
+        private void ViewReceivedMessage(byte[] msgBytes)
         {
+        	var message = radString.Checked ? ComDataConverter.BytesToString(msgBytes) : ComDataConverter.BytesToHexString(msgBytes);
             Log.Warn("[RECEIVED] " + message);
             txtLog.AppendText(FormatLogMessage("RECEIVED", message));
             if (Settings.Default.DeviceBotEnabled)
@@ -181,20 +174,8 @@ namespace Net.Junian.SDEmu
             				chkNewLine.Checked == true ? Environment.NewLine : string.Empty));
             	else if(radHexadecimal.Checked)
             	{
-            		var sb = new StringBuilder();
-            		var hexStr = message.ToUpper();
-            		foreach(var c in hexStr)
-            			if((c >= '0' && c<='9') || (c>='A' && c<='F'))
-            				sb.Append(c);
-            		if((sb.Length & 1) == 1)
-            			sb.Insert(0, '0');
-            		message = hexStr = sb.ToString();
-            		var bytes = new List<byte>();
-            		for(int i=0;i<hexStr.Length;i+=2)
-            		{
-            			bytes.Add( Convert.ToByte(new StringBuilder().Append(hexStr[i]).Append(hexStr[i+1]).ToString(), 16) );
-            		}
-            		var byteArr = bytes.ToArray();
+            		var byteArr = ComDataConverter.HexStringToBytes(message);
+            		message = ComDataConverter.BytesToHexString(byteArr);
             		serialPort.Write(byteArr, 0, byteArr.Length);
             	}
                 Log.Warn("[SEND] " + message);
@@ -314,7 +295,10 @@ namespace Net.Junian.SDEmu
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            String message = serialPort.ReadExisting();
+        	byte[] message = new byte[serialPort.BytesToRead];
+        	int i=0;
+        	while(serialPort.BytesToRead > 0)
+        		message[i++] = (byte) serialPort.ReadByte();
             this.Invoke(dataReceived, message);
         }
 
@@ -332,7 +316,7 @@ namespace Net.Junian.SDEmu
         {
         	if(!Settings.Default.DeviceBotEnabled)
         		return;
-        	var message = txtMessage.Text;
+        	var message = ComDataConverter.StringToBytes(txtMessage.Text);
 			this.Invoke(dataReceived, message);        	
         }
     }

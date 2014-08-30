@@ -232,21 +232,21 @@
         	// 
         	// radHexadecimal
         	// 
+        	this.radHexadecimal.Checked = true;
         	this.radHexadecimal.Location = new System.Drawing.Point(58, 18);
         	this.radHexadecimal.Name = "radHexadecimal";
         	this.radHexadecimal.Size = new System.Drawing.Size(88, 24);
         	this.radHexadecimal.TabIndex = 18;
+        	this.radHexadecimal.TabStop = true;
         	this.radHexadecimal.Text = "Hexadecimal";
         	this.radHexadecimal.UseVisualStyleBackColor = true;
         	// 
         	// radString
         	// 
-        	this.radString.Checked = true;
         	this.radString.Location = new System.Drawing.Point(6, 18);
         	this.radString.Name = "radString";
         	this.radString.Size = new System.Drawing.Size(57, 24);
         	this.radString.TabIndex = 16;
-        	this.radString.TabStop = true;
         	this.radString.Text = "String";
         	this.radString.UseVisualStyleBackColor = true;
         	// 

@@ -297,7 +297,8 @@ namespace Net.Junian.SDEmu
         {
         	byte[] message = new byte[serialPort.BytesToRead];
         	int i=0;
-        	while(serialPort.BytesToRead > 0)
+        	int j=serialPort.BytesToRead;
+        	while(i<j)
         		message[i++] = (byte) serialPort.ReadByte();
             this.Invoke(dataReceived, message);
         }

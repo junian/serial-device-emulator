@@ -314,7 +314,7 @@
         	this.MaximizeBox = false;
         	this.Name = "MainForm";
         	this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        	this.Text = "SDEmu";
+        	this.Text = "Serial Device Emulator";
         	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
         	this.Load += new System.EventHandler(this.MainForm_Load);
         	this.mnuMain.ResumeLayout(false);

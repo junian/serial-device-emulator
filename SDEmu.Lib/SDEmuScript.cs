@@ -26,11 +26,6 @@ namespace Net.Junian.SDEmu.Lib
             IsCompiled = false;
         }
 
-        //public Boolean Compile(string script)
-        //{
-        //    return Compile(new string[1] { script });
-        //}
-
         /// <summary>
         /// compile script
         /// </summary>
@@ -48,16 +43,47 @@ namespace Net.Junian.SDEmu.Lib
             compilerParameters.ReferencedAssemblies.Add("System.dll");
 
             StringBuilder stringBuilder = new StringBuilder();
-
+		
             string openingSource =
                 "using System;" +
+            	"using System.Text;" +
+            	"using System.IO.Ports;" +
+            	"using System.Collections.Generic;" +
+            	"class CustomDict" +
+            	"{ " +
+            	"   private Dictionary<string, object> variables = new Dictionary<string, object>();" +
+            	"   public object this[string key]" +
+            	    "{" +
+            	    "    get { " +
+            	    "      if(variables == null) variables = new Dictionary<string, object>();" +
+            	    "      if(!variables.ContainsKey(key)) return null;" +
+            	    "      return variables[key];" +
+                    "    }" +            	
+            	    "    set { " +
+            	    "      if(variables == null) variables = new Dictionary<string, object>();" +
+            	    "      if(!variables.ContainsKey(key)) variables.Add(key, value);" +
+            	    "      else variables[key] = value;" +
+            	    "    }" +
+            	    "}" +
+            	"} " +
                 "class SDEmuScriptRunner" +
                 "{" +
-                    "public SDEmuScriptRunner(){}" +
-                    "public static string Execute(string message)" +
+            	    "private CustomDict vars = new CustomDict();" +
+            	    "private bool initVar = true;" +
+            	    "public SDEmuScriptRunner(){}" +
+                    "private bool init() { bool returnVal = false; if(initVar) { returnVal = true; initVar = false; } return returnVal; } " +            	
+            	    "private string ToHex(byte[] bytes)" +
+            	    "{\n" +
+            	    "  if(bytes == null) return string.Empty;" +
+            	    "  StringBuilder sb = new StringBuilder();" +
+            	    "  foreach(byte b in bytes) sb.Append(string.Format(\"{0:X}\", b)).Append(\" \");" +
+            	    "  return sb.ToString();" +
+            	    "}" +
+                    "public string Execute(string message)" +
                     "{\n";
+            
             string closingSource =
-                        "\nreturn \"\";" +
+            	        "return \"\";" +
                     "}" +
                 "}";
 
@@ -65,12 +91,7 @@ namespace Net.Junian.SDEmu.Lib
             stringBuilder.Append(script);
             stringBuilder.Append(closingSource);
 
-            //string[] sources = new string[script.Length + 2];
             string sources = stringBuilder.ToString();
-            //Console.WriteLine(sources);
-            //sources[0] = openingSource;
-            //Array.Copy(script, 0, sources, 1, script.Length);
-            //sources[sources.Length-1] = closingSource;
 
             CompilerResults compilerResults = codeProvider.CompileAssemblyFromSource(compilerParameters, sources);
 

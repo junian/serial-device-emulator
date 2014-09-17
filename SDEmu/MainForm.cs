@@ -17,7 +17,7 @@ namespace Net.Junian.SDEmu
         #region Private Attributes
 
         private static log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private delegate void DataReceived(String message);
+        private delegate void DataReceived(byte[] message);
         private DataReceived dataReceived;
 
         #endregion
@@ -68,7 +68,7 @@ namespace Net.Junian.SDEmu
         }
 
         /// <summary>
-        /// open serial port connection
+        /// Open serial port connection
         /// </summary>
         /// <param name="portName"></param>
         /// <returns></returns>
@@ -108,10 +108,8 @@ namespace Net.Junian.SDEmu
         /// </summary>
         private void RunModeControlState()
         {
-            txtMessage.Enabled = true;
-            btnSend.Enabled = true;
-            cmbPortNames.Enabled = false;
-            btnRefresh.Enabled = false;
+            groupBoxDeviceSettings.Enabled = false;
+            groupBoxDeviceActivities.Enabled = true;
         }
 
         /// <summary>
@@ -120,10 +118,8 @@ namespace Net.Junian.SDEmu
         private void IdleModeControlState()
         {
             txtMessage.Text = "";
-            txtMessage.Enabled = false;
-            btnSend.Enabled = false;
-            cmbPortNames.Enabled = true;
-            btnRefresh.Enabled = true;
+            groupBoxDeviceSettings.Enabled = true;
+            groupBoxDeviceActivities.Enabled = false;
         }
 
         /// <summary>
@@ -152,8 +148,9 @@ namespace Net.Junian.SDEmu
             notifyIcon.ShowBalloonTip(250);
         }
 
-        private void ViewReceivedMessage(String message)
+        private void ViewReceivedMessage(byte[] msgBytes)
         {
+        	var message = radString.Checked ? ComDataConverter.BytesToString(msgBytes) : ComDataConverter.BytesToHexString(msgBytes);
             Log.Warn("[RECEIVED] " + message);
             txtLog.AppendText(FormatLogMessage("RECEIVED", message));
             if (Settings.Default.DeviceBotEnabled)
@@ -165,11 +162,22 @@ namespace Net.Junian.SDEmu
             }
         }
 
-        private void SendMessage(String message)
+        public void SendMessage(String message)
         {
             try
             {
-                serialPort.Write(message);
+            	if(radString.Checked)
+            		serialPort.Write(
+            			string.Format(
+            				"{0}{1}",
+            				message,
+            				chkNewLine.Checked == true ? Environment.NewLine : string.Empty));
+            	else if(radHexadecimal.Checked)
+            	{
+            		var byteArr = ComDataConverter.HexStringToBytes(message);
+            		message = ComDataConverter.BytesToHexString(byteArr);
+            		serialPort.Write(byteArr, 0, byteArr.Length);
+            	}
                 Log.Warn("[SEND] " + message);
                 txtLog.AppendText(FormatLogMessage("SEND", message));
             }
@@ -281,13 +289,17 @@ namespace Net.Junian.SDEmu
         private void btnSend_Click(object sender, EventArgs e)
         {
             SendMessage(txtMessage.Text);
-            txtMessage.Text = "";
             txtMessage.Focus();
+            txtMessage.SelectAll();
         }
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            String message = serialPort.ReadExisting();
+        	byte[] message = new byte[serialPort.BytesToRead];
+        	int i=0;
+        	int j=serialPort.BytesToRead;
+        	while(i<j)
+        		message[i++] = (byte) serialPort.ReadByte();
             this.Invoke(dataReceived, message);
         }
 
@@ -300,6 +312,13 @@ namespace Net.Junian.SDEmu
         {
             new DeviceBot().ShowDialog(this);
         }
-
+        
+        void BtnTestBotClick(object sender, EventArgs e)
+        {
+        	if(!Settings.Default.DeviceBotEnabled)
+        		return;
+        	var message = ComDataConverter.StringToBytes(txtMessage.Text);
+			this.Invoke(dataReceived, message);        	
+        }
     }
 }

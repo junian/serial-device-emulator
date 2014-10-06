@@ -52,6 +52,8 @@
         	this.radioButtonDataBits5 = new System.Windows.Forms.RadioButton();
         	this.label3 = new System.Windows.Forms.Label();
         	this.panel3 = new System.Windows.Forms.Panel();
+        	this.label4 = new System.Windows.Forms.Label();
+        	this.comboBoxParity = new System.Windows.Forms.ComboBox();
         	this.label6 = new System.Windows.Forms.Label();
         	this.comboBoxHandshake = new System.Windows.Forms.ComboBox();
         	this.label2 = new System.Windows.Forms.Label();
@@ -74,8 +76,6 @@
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
         	this.panel1 = new System.Windows.Forms.Panel();
-        	this.label4 = new System.Windows.Forms.Label();
-        	this.comboBoxParity = new System.Windows.Forms.ComboBox();
         	this.groupBox1 = new System.Windows.Forms.GroupBox();
         	this.mnuMain.SuspendLayout();
         	this.groupBoxDeviceSettings.SuspendLayout();
@@ -167,7 +167,7 @@
         	this.groupBoxDeviceSettings.Controls.Add(this.panel2);
         	this.groupBoxDeviceSettings.Controls.Add(this.panel3);
         	this.groupBoxDeviceSettings.Dock = System.Windows.Forms.DockStyle.Top;
-        	this.groupBoxDeviceSettings.Location = new System.Drawing.Point(0, 146);
+        	this.groupBoxDeviceSettings.Location = new System.Drawing.Point(0, 106);
         	this.groupBoxDeviceSettings.Name = "groupBoxDeviceSettings";
         	this.groupBoxDeviceSettings.Size = new System.Drawing.Size(233, 149);
         	this.groupBoxDeviceSettings.TabIndex = 8;
@@ -305,6 +305,30 @@
         	this.panel3.Size = new System.Drawing.Size(227, 81);
         	this.panel3.TabIndex = 14;
         	// 
+        	// label4
+        	// 
+        	this.label4.AutoSize = true;
+        	this.label4.Location = new System.Drawing.Point(9, 57);
+        	this.label4.Name = "label4";
+        	this.label4.Size = new System.Drawing.Size(36, 13);
+        	this.label4.TabIndex = 16;
+        	this.label4.Text = "Parity:";
+        	// 
+        	// comboBoxParity
+        	// 
+        	this.comboBoxParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxParity.FormattingEnabled = true;
+        	this.comboBoxParity.Items.AddRange(new object[] {
+        	        	        	"None",
+        	        	        	"RTS/CTS",
+        	        	        	"XON/XOFF",
+        	        	        	"RTS/CTS+XON/XOFF"});
+        	this.comboBoxParity.Location = new System.Drawing.Point(76, 54);
+        	this.comboBoxParity.Name = "comboBoxParity";
+        	this.comboBoxParity.Size = new System.Drawing.Size(142, 21);
+        	this.comboBoxParity.TabIndex = 15;
+        	this.toolTip.SetToolTip(this.comboBoxParity, "Port names");
+        	// 
         	// label6
         	// 
         	this.label6.AutoSize = true;
@@ -325,7 +349,7 @@
         	        	        	"RTS/CTS+XON/XOFF"});
         	this.comboBoxHandshake.Location = new System.Drawing.Point(76, 31);
         	this.comboBoxHandshake.Name = "comboBoxHandshake";
-        	this.comboBoxHandshake.Size = new System.Drawing.Size(112, 21);
+        	this.comboBoxHandshake.Size = new System.Drawing.Size(142, 21);
         	this.comboBoxHandshake.TabIndex = 13;
         	this.toolTip.SetToolTip(this.comboBoxHandshake, "Port names");
         	// 
@@ -358,7 +382,7 @@
         	        	        	"256000"});
         	this.comboBoxBaudRate.Location = new System.Drawing.Point(76, 6);
         	this.comboBoxBaudRate.Name = "comboBoxBaudRate";
-        	this.comboBoxBaudRate.Size = new System.Drawing.Size(112, 21);
+        	this.comboBoxBaudRate.Size = new System.Drawing.Size(142, 21);
         	this.comboBoxBaudRate.TabIndex = 11;
         	this.comboBoxBaudRate.Text = "19200";
         	this.toolTip.SetToolTip(this.comboBoxBaudRate, "Port names");
@@ -387,9 +411,9 @@
         	// labelSelectedPort
         	// 
         	this.labelSelectedPort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        	this.labelSelectedPort.Location = new System.Drawing.Point(6, 91);
+        	this.labelSelectedPort.Location = new System.Drawing.Point(104, 47);
         	this.labelSelectedPort.Name = "labelSelectedPort";
-        	this.labelSelectedPort.Size = new System.Drawing.Size(221, 47);
+        	this.labelSelectedPort.Size = new System.Drawing.Size(123, 52);
         	this.labelSelectedPort.TabIndex = 12;
         	this.labelSelectedPort.Text = "Connected Port:";
         	this.labelSelectedPort.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -399,7 +423,7 @@
         	this.buttonRun.Image = global::Net.Junian.SDEmu.Properties.Resources.IconPlay;
         	this.buttonRun.Location = new System.Drawing.Point(6, 46);
         	this.buttonRun.Name = "buttonRun";
-        	this.buttonRun.Size = new System.Drawing.Size(221, 35);
+        	this.buttonRun.Size = new System.Drawing.Size(92, 53);
         	this.buttonRun.TabIndex = 11;
         	this.buttonRun.Text = "&Run";
         	this.buttonRun.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -546,30 +570,6 @@
         	this.panel1.Size = new System.Drawing.Size(233, 411);
         	this.panel1.TabIndex = 13;
         	// 
-        	// label4
-        	// 
-        	this.label4.AutoSize = true;
-        	this.label4.Location = new System.Drawing.Point(9, 57);
-        	this.label4.Name = "label4";
-        	this.label4.Size = new System.Drawing.Size(36, 13);
-        	this.label4.TabIndex = 16;
-        	this.label4.Text = "Parity:";
-        	// 
-        	// comboBoxParity
-        	// 
-        	this.comboBoxParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        	this.comboBoxParity.FormattingEnabled = true;
-        	this.comboBoxParity.Items.AddRange(new object[] {
-        	        	        	"None",
-        	        	        	"RTS/CTS",
-        	        	        	"XON/XOFF",
-        	        	        	"RTS/CTS+XON/XOFF"});
-        	this.comboBoxParity.Location = new System.Drawing.Point(76, 54);
-        	this.comboBoxParity.Name = "comboBoxParity";
-        	this.comboBoxParity.Size = new System.Drawing.Size(112, 21);
-        	this.comboBoxParity.TabIndex = 15;
-        	this.toolTip.SetToolTip(this.comboBoxParity, "Port names");
-        	// 
         	// groupBox1
         	// 
         	this.groupBox1.Controls.Add(this.comboBoxPortNames);
@@ -579,7 +579,7 @@
         	this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
         	this.groupBox1.Location = new System.Drawing.Point(0, 0);
         	this.groupBox1.Name = "groupBox1";
-        	this.groupBox1.Size = new System.Drawing.Size(233, 146);
+        	this.groupBox1.Size = new System.Drawing.Size(233, 106);
         	this.groupBox1.TabIndex = 13;
         	this.groupBox1.TabStop = false;
         	this.groupBox1.Text = "Device Selection";

@@ -253,9 +253,13 @@ namespace Net.Junian.SDEmu
             LoadSettings();
             LoadPortNames();
             textLog.AppendText(FormatLogMessage("INFO", "application started"));
-            comboBoxHandshake.SelectedIndex = 0;
             SetSelectedPortLabel("-");
             dataReceived = new DataReceived(ViewReceivedMessage);
+            
+            comboBoxPortNames.DataBindings.Add("Enabled", groupBoxDeviceSettings, "Enabled");
+            buttonRefresh.DataBindings.Add("Enabled", groupBoxDeviceSettings, "Enabled");
+            comboBoxParity.DataSource = (Parity[]) Enum.GetValues(typeof(Parity));
+            comboBoxHandshake.DataSource = (Handshake[]) Enum.GetValues(typeof(Handshake));
         }
 
         private void alwaysOnTopToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)

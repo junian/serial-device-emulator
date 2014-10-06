@@ -23,11 +23,30 @@ namespace Net.Junian.SDEmu
         #endregion
 
         #region Properties
+        
         public SDEmuScript AutoResponderScript { get; set; }
+        
+        public int SerialBaudRate
+        {
+        	get
+        	{
+        		return int.Parse(comboBoxBaudRate.Text);
+        	}
+        }
+        
         #endregion
 
         #region Private Methods
 
+        private void SetSelectedPortLabel(string label)
+        {
+        	labelSelectedPort.Text = string.Format(
+        		"Connected Port:{0}{1}", 
+        		Environment.NewLine, 
+        		//Environment.NewLine,
+        		label);
+        }
+        
         /// <summary>
         /// save app settings
         /// </summary>
@@ -52,6 +71,7 @@ namespace Net.Junian.SDEmu
         {
             alwaysOnTopToolStripMenuItem.Checked = Settings.Default.MainFormTopMost;
             this.TopMost = Settings.Default.MainFormTopMost;
+            
             if (Settings.Default.DeviceBotEnabled)
             {
                 AutoResponderScript = new SDEmuScript();
@@ -117,7 +137,7 @@ namespace Net.Junian.SDEmu
         /// </summary>
         private void IdleModeControlState()
         {
-            txtMessage.Text = "";
+            textSendMessage.Text = "";
             groupBoxDeviceSettings.Enabled = true;
             groupBoxDeviceActivities.Enabled = false;
         }
@@ -129,16 +149,16 @@ namespace Net.Junian.SDEmu
         {
             String[] portNames = SerialPort.GetPortNames();
             Array.Sort(portNames);
-            cmbPortNames.Items.Clear();
-            cmbPortNames.Items.AddRange(portNames);
-            if (cmbPortNames.Items.Count > 0)
+            comboBoxPortNames.Items.Clear();
+            comboBoxPortNames.Items.AddRange(portNames);
+            if (comboBoxPortNames.Items.Count > 0)
             {
-                cmbPortNames.SelectedIndex = 0;
-                btnRun.Enabled = true;
+                comboBoxPortNames.SelectedIndex = 0;
+                buttonRun.Enabled = true;
             }
             else
-                btnRun.Enabled = false;
-            string jumlah = cmbPortNames.Items.Count > 0 ? cmbPortNames.Items.Count.ToString() : "No";
+                buttonRun.Enabled = false;
+            string jumlah = comboBoxPortNames.Items.Count > 0 ? comboBoxPortNames.Items.Count.ToString() : "No";
             ShowBallon(jumlah + " port(s) detected.");
         }
 
@@ -150,9 +170,9 @@ namespace Net.Junian.SDEmu
 
         private void ViewReceivedMessage(byte[] msgBytes)
         {
-        	var message = radString.Checked ? ComDataConverter.BytesToString(msgBytes) : ComDataConverter.BytesToHexString(msgBytes);
+        	var message = radioStringMessage.Checked ? ComDataConverter.BytesToString(msgBytes) : ComDataConverter.BytesToHexString(msgBytes);
             Log.Warn("[RECEIVED] " + message);
-            txtLog.AppendText(FormatLogMessage("RECEIVED", message));
+            textLog.AppendText(FormatLogMessage("RECEIVED", message));
             if (Settings.Default.DeviceBotEnabled)
             {
                 string response = AutoResponderScript.GetResponse(message);
@@ -166,20 +186,30 @@ namespace Net.Junian.SDEmu
         {
             try
             {
-            	if(radString.Checked)
+            	if(radioStringMessage.Checked)
             		serialPort.Write(
             			string.Format(
-            				"{0}{1}",
+            				"{0}{1}{2}",
             				message,
-            				chkNewLine.Checked == true ? Environment.NewLine : string.Empty));
-            	else if(radHexadecimal.Checked)
+            				checkBoxCR.Checked == true ? "\r" : string.Empty,
+            				checkBoxLF.Checked == true ? "\n" : string.Empty));
+            	else if(radioHexMessage.Checked)
             	{
             		var byteArr = ComDataConverter.HexStringToBytes(message);
+            		
+            		var listOfBytes = new List<byte>();
+            		listOfBytes.AddRange(byteArr);
+            		if(checkBoxCR.Checked == true)
+            			listOfBytes.Add(0x0D);
+            		if(checkBoxLF.Checked == true)
+            			listOfBytes.Add(0x0A);
+            		byteArr = listOfBytes.ToArray();
+            		
             		message = ComDataConverter.BytesToHexString(byteArr);
             		serialPort.Write(byteArr, 0, byteArr.Length);
             	}
                 Log.Warn("[SEND] " + message);
-                txtLog.AppendText(FormatLogMessage("SEND", message));
+                textLog.AppendText(FormatLogMessage("SEND", message));
             }
             catch (Exception ex)
             {
@@ -194,7 +224,7 @@ namespace Net.Junian.SDEmu
         private void ViewError(Exception ex)
         {
             Log.Error("[ERROR] " + ex);
-            txtLog.AppendText(FormatLogMessage("ERROR", ex.Message));
+            textLog.AppendText(FormatLogMessage("ERROR", ex.Message));
         }
 
         /// <summary>
@@ -222,8 +252,9 @@ namespace Net.Junian.SDEmu
         {
             LoadSettings();
             LoadPortNames();
-            txtLog.AppendText(FormatLogMessage("INFO", "application started"));
-            lblComRun.Text = "";
+            textLog.AppendText(FormatLogMessage("INFO", "application started"));
+            comboBoxHandshake.SelectedIndex = 0;
+            SetSelectedPortLabel("-");
             dataReceived = new DataReceived(ViewReceivedMessage);
         }
 
@@ -260,23 +291,25 @@ namespace Net.Junian.SDEmu
         {
             try
             {
-                String portName = (String)cmbPortNames.SelectedItem;
-                if (btnRun.Text == "&Run")
+                String portName = (String)comboBoxPortNames.SelectedItem;
+                if (buttonRun.Text == "&Run")
                 {
                     if (OpenSerialPort(portName))
                     {
-                        txtLog.AppendText(FormatLogMessage("INFO", portName + " opened"));
-                        lblComRun.Text = portName;
-                        btnRun.Text = "&Stop";
+                        textLog.AppendText(FormatLogMessage("INFO", portName + " opened"));
+                        SetSelectedPortLabel(portName);
+                        buttonRun.Text = "&Stop";
+                        buttonRun.Image = Resources.IconStop;
                         RunModeControlState();
                     }
                 }
                 else
                 {
                     CloseSerialPort();
-                    txtLog.AppendText(FormatLogMessage("INFO", lblComRun.Text + " closed"));
-                    lblComRun.Text = "";
-                    btnRun.Text = "&Run";
+                    textLog.AppendText(FormatLogMessage("INFO", labelSelectedPort.Text + " closed"));
+                    SetSelectedPortLabel("-");
+                    buttonRun.Text = "&Run";
+                    buttonRun.Image = Resources.IconPlay;
                     IdleModeControlState();
                 }
             }
@@ -288,9 +321,9 @@ namespace Net.Junian.SDEmu
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            SendMessage(txtMessage.Text);
-            txtMessage.Focus();
-            txtMessage.SelectAll();
+            SendMessage(textSendMessage.Text);
+            textSendMessage.Focus();
+            textSendMessage.SelectAll();
         }
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -317,8 +350,9 @@ namespace Net.Junian.SDEmu
         {
         	if(!Settings.Default.DeviceBotEnabled)
         		return;
-        	var message = ComDataConverter.StringToBytes(txtMessage.Text);
+        	var message = ComDataConverter.StringToBytes(textSendMessage.Text);
 			this.Invoke(dataReceived, message);        	
         }
+        
     }
 }

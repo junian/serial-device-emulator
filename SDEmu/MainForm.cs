@@ -298,6 +298,7 @@ namespace Net.Junian.SDEmu
                 String portName = (String)comboBoxPortNames.SelectedItem;
                 if (buttonRun.Text == "&Run")
                 {
+                	serialPort.BaudRate = SerialBaudRate;
                     if (OpenSerialPort(portName))
                     {
                         textLog.AppendText(FormatLogMessage("INFO", portName + " opened"));

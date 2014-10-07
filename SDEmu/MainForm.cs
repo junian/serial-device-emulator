@@ -14,6 +14,9 @@ namespace Net.Junian.SDEmu
 {
     public partial class MainForm : Form
     {
+    	public const int DefaultSerialDataBits = 8;
+    	public const StopBits DefaultSerialStopBits = StopBits.One;
+    	
         #region Private Attributes
 
         private static log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -31,6 +34,56 @@ namespace Net.Junian.SDEmu
         	get
         	{
         		return int.Parse(comboBoxBaudRate.Text);
+        	}
+        }
+        
+        public Handshake SerialHandshake
+        {
+        	get
+        	{
+        		return (Handshake) comboBoxHandshake.SelectedItem;
+        	}
+        }
+        
+        public Parity SerialParity
+        {
+        	get
+        	{
+        		return (Parity) comboBoxParity.SelectedItem;
+        	}
+        }
+        
+        public int SerialDataBits
+        {
+        	get
+        	{
+        		foreach(var control in panelDataBits.Controls)
+        		{
+        			if(control is RadioButton)
+        			{
+        				var radioButton = (RadioButton) control;
+        				if(radioButton.Checked)
+        					return int.Parse(radioButton.Text);
+        			}
+        		}
+        		return DefaultSerialDataBits;
+        	}
+        }
+        
+        public StopBits SerialStopBits
+        {
+        	get
+        	{
+        		foreach(var control in panelStopBits.Controls)
+        		{
+        			if(control is RadioButton)
+        			{
+        				var radioButton = (RadioButton) control;
+        				if(radioButton.Checked)
+        					return (StopBits) radioButton.Tag;
+        			}
+        		}
+        		return DefaultSerialStopBits;
         	}
         }
         
@@ -260,6 +313,11 @@ namespace Net.Junian.SDEmu
             buttonRefresh.DataBindings.Add("Enabled", groupBoxDeviceSettings, "Enabled");
             comboBoxParity.DataSource = (Parity[]) Enum.GetValues(typeof(Parity));
             comboBoxHandshake.DataSource = (Handshake[]) Enum.GetValues(typeof(Handshake));
+            
+            //initialize StopBits inside radioButton Tag
+            radioButtonStopBits1.Tag = StopBits.One;
+            radioButtonStopBits15.Tag = StopBits.OnePointFive;
+            radioButtonStopBits2.Tag = StopBits.Two;
         }
 
         private void alwaysOnTopToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -299,6 +357,11 @@ namespace Net.Junian.SDEmu
                 if (buttonRun.Text == "&Run")
                 {
                 	serialPort.BaudRate = SerialBaudRate;
+                	serialPort.Handshake = SerialHandshake;
+                	serialPort.Parity = SerialParity;
+                	serialPort.DataBits = SerialDataBits;
+                	serialPort.StopBits = SerialStopBits;
+                	
                     if (OpenSerialPort(portName))
                     {
                         textLog.AppendText(FormatLogMessage("INFO", portName + " opened"));
@@ -359,5 +422,13 @@ namespace Net.Junian.SDEmu
 			this.Invoke(dataReceived, message);        	
         }
         
+        void ComboBoxBaudRateKeyPress(object sender, KeyPressEventArgs e)
+        {
+        	if (!char.IsControl(e.KeyChar) 
+		        && !char.IsDigit(e.KeyChar) )
+		    {
+		        e.Handled = true;
+		    }
+        }
     }
 }

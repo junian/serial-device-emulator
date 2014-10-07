@@ -40,15 +40,15 @@
         	this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.groupBoxDeviceSettings = new System.Windows.Forms.GroupBox();
-        	this.panel5 = new System.Windows.Forms.Panel();
-        	this.radioButton10 = new System.Windows.Forms.RadioButton();
-        	this.radioButton11 = new System.Windows.Forms.RadioButton();
-        	this.radioButton12 = new System.Windows.Forms.RadioButton();
+        	this.panelStopBits = new System.Windows.Forms.Panel();
+        	this.radioButtonStopBits2 = new System.Windows.Forms.RadioButton();
+        	this.radioButtonStopBits15 = new System.Windows.Forms.RadioButton();
+        	this.radioButtonStopBits1 = new System.Windows.Forms.RadioButton();
         	this.label5 = new System.Windows.Forms.Label();
-        	this.panel2 = new System.Windows.Forms.Panel();
-        	this.radioButton3 = new System.Windows.Forms.RadioButton();
-        	this.radioButton2 = new System.Windows.Forms.RadioButton();
-        	this.radioButton1 = new System.Windows.Forms.RadioButton();
+        	this.panelDataBits = new System.Windows.Forms.Panel();
+        	this.radioButtonDataBits8 = new System.Windows.Forms.RadioButton();
+        	this.radioButtonDataBits7 = new System.Windows.Forms.RadioButton();
+        	this.radioButtonDataBits6 = new System.Windows.Forms.RadioButton();
         	this.radioButtonDataBits5 = new System.Windows.Forms.RadioButton();
         	this.label3 = new System.Windows.Forms.Label();
         	this.panel3 = new System.Windows.Forms.Panel();
@@ -79,8 +79,8 @@
         	this.groupBox1 = new System.Windows.Forms.GroupBox();
         	this.mnuMain.SuspendLayout();
         	this.groupBoxDeviceSettings.SuspendLayout();
-        	this.panel5.SuspendLayout();
-        	this.panel2.SuspendLayout();
+        	this.panelStopBits.SuspendLayout();
+        	this.panelDataBits.SuspendLayout();
         	this.panel3.SuspendLayout();
         	this.groupBoxDeviceActivities.SuspendLayout();
         	this.panel6.SuspendLayout();
@@ -163,8 +163,8 @@
         	// 
         	// groupBoxDeviceSettings
         	// 
-        	this.groupBoxDeviceSettings.Controls.Add(this.panel5);
-        	this.groupBoxDeviceSettings.Controls.Add(this.panel2);
+        	this.groupBoxDeviceSettings.Controls.Add(this.panelStopBits);
+        	this.groupBoxDeviceSettings.Controls.Add(this.panelDataBits);
         	this.groupBoxDeviceSettings.Controls.Add(this.panel3);
         	this.groupBoxDeviceSettings.Dock = System.Windows.Forms.DockStyle.Top;
         	this.groupBoxDeviceSettings.Location = new System.Drawing.Point(0, 106);
@@ -174,49 +174,49 @@
         	this.groupBoxDeviceSettings.TabStop = false;
         	this.groupBoxDeviceSettings.Text = "Device Settings";
         	// 
-        	// panel5
+        	// panelStopBits
         	// 
-        	this.panel5.Controls.Add(this.radioButton10);
-        	this.panel5.Controls.Add(this.radioButton11);
-        	this.panel5.Controls.Add(this.radioButton12);
-        	this.panel5.Controls.Add(this.label5);
-        	this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-        	this.panel5.Location = new System.Drawing.Point(3, 121);
-        	this.panel5.Name = "panel5";
-        	this.panel5.Size = new System.Drawing.Size(227, 24);
-        	this.panel5.TabIndex = 16;
+        	this.panelStopBits.Controls.Add(this.radioButtonStopBits2);
+        	this.panelStopBits.Controls.Add(this.radioButtonStopBits15);
+        	this.panelStopBits.Controls.Add(this.radioButtonStopBits1);
+        	this.panelStopBits.Controls.Add(this.label5);
+        	this.panelStopBits.Dock = System.Windows.Forms.DockStyle.Top;
+        	this.panelStopBits.Location = new System.Drawing.Point(3, 121);
+        	this.panelStopBits.Name = "panelStopBits";
+        	this.panelStopBits.Size = new System.Drawing.Size(227, 24);
+        	this.panelStopBits.TabIndex = 16;
         	// 
-        	// radioButton10
+        	// radioButtonStopBits2
         	// 
-        	this.radioButton10.AutoSize = true;
-        	this.radioButton10.Location = new System.Drawing.Point(157, 3);
-        	this.radioButton10.Name = "radioButton10";
-        	this.radioButton10.Size = new System.Drawing.Size(31, 17);
-        	this.radioButton10.TabIndex = 16;
-        	this.radioButton10.Text = "2";
-        	this.radioButton10.UseVisualStyleBackColor = true;
+        	this.radioButtonStopBits2.AutoSize = true;
+        	this.radioButtonStopBits2.Location = new System.Drawing.Point(157, 3);
+        	this.radioButtonStopBits2.Name = "radioButtonStopBits2";
+        	this.radioButtonStopBits2.Size = new System.Drawing.Size(31, 17);
+        	this.radioButtonStopBits2.TabIndex = 16;
+        	this.radioButtonStopBits2.Text = "2";
+        	this.radioButtonStopBits2.UseVisualStyleBackColor = true;
         	// 
-        	// radioButton11
+        	// radioButtonStopBits15
         	// 
-        	this.radioButton11.AutoSize = true;
-        	this.radioButton11.Location = new System.Drawing.Point(112, 3);
-        	this.radioButton11.Name = "radioButton11";
-        	this.radioButton11.Size = new System.Drawing.Size(40, 17);
-        	this.radioButton11.TabIndex = 15;
-        	this.radioButton11.Text = "1.5";
-        	this.radioButton11.UseVisualStyleBackColor = true;
+        	this.radioButtonStopBits15.AutoSize = true;
+        	this.radioButtonStopBits15.Location = new System.Drawing.Point(112, 3);
+        	this.radioButtonStopBits15.Name = "radioButtonStopBits15";
+        	this.radioButtonStopBits15.Size = new System.Drawing.Size(40, 17);
+        	this.radioButtonStopBits15.TabIndex = 15;
+        	this.radioButtonStopBits15.Text = "1.5";
+        	this.radioButtonStopBits15.UseVisualStyleBackColor = true;
         	// 
-        	// radioButton12
+        	// radioButtonStopBits1
         	// 
-        	this.radioButton12.AutoSize = true;
-        	this.radioButton12.Checked = true;
-        	this.radioButton12.Location = new System.Drawing.Point(76, 3);
-        	this.radioButton12.Name = "radioButton12";
-        	this.radioButton12.Size = new System.Drawing.Size(31, 17);
-        	this.radioButton12.TabIndex = 14;
-        	this.radioButton12.TabStop = true;
-        	this.radioButton12.Text = "1";
-        	this.radioButton12.UseVisualStyleBackColor = true;
+        	this.radioButtonStopBits1.AutoSize = true;
+        	this.radioButtonStopBits1.Checked = true;
+        	this.radioButtonStopBits1.Location = new System.Drawing.Point(76, 3);
+        	this.radioButtonStopBits1.Name = "radioButtonStopBits1";
+        	this.radioButtonStopBits1.Size = new System.Drawing.Size(31, 17);
+        	this.radioButtonStopBits1.TabIndex = 14;
+        	this.radioButtonStopBits1.TabStop = true;
+        	this.radioButtonStopBits1.Text = "1";
+        	this.radioButtonStopBits1.UseVisualStyleBackColor = true;
         	// 
         	// label5
         	// 
@@ -227,50 +227,50 @@
         	this.label5.TabIndex = 13;
         	this.label5.Text = "Stop Bits:";
         	// 
-        	// panel2
+        	// panelDataBits
         	// 
-        	this.panel2.Controls.Add(this.radioButton3);
-        	this.panel2.Controls.Add(this.radioButton2);
-        	this.panel2.Controls.Add(this.radioButton1);
-        	this.panel2.Controls.Add(this.radioButtonDataBits5);
-        	this.panel2.Controls.Add(this.label3);
-        	this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-        	this.panel2.Location = new System.Drawing.Point(3, 97);
-        	this.panel2.Name = "panel2";
-        	this.panel2.Size = new System.Drawing.Size(227, 24);
-        	this.panel2.TabIndex = 13;
+        	this.panelDataBits.Controls.Add(this.radioButtonDataBits8);
+        	this.panelDataBits.Controls.Add(this.radioButtonDataBits7);
+        	this.panelDataBits.Controls.Add(this.radioButtonDataBits6);
+        	this.panelDataBits.Controls.Add(this.radioButtonDataBits5);
+        	this.panelDataBits.Controls.Add(this.label3);
+        	this.panelDataBits.Dock = System.Windows.Forms.DockStyle.Top;
+        	this.panelDataBits.Location = new System.Drawing.Point(3, 97);
+        	this.panelDataBits.Name = "panelDataBits";
+        	this.panelDataBits.Size = new System.Drawing.Size(227, 24);
+        	this.panelDataBits.TabIndex = 13;
         	// 
-        	// radioButton3
+        	// radioButtonDataBits8
         	// 
-        	this.radioButton3.AutoSize = true;
-        	this.radioButton3.Checked = true;
-        	this.radioButton3.Location = new System.Drawing.Point(187, 3);
-        	this.radioButton3.Name = "radioButton3";
-        	this.radioButton3.Size = new System.Drawing.Size(31, 17);
-        	this.radioButton3.TabIndex = 17;
-        	this.radioButton3.TabStop = true;
-        	this.radioButton3.Text = "8";
-        	this.radioButton3.UseVisualStyleBackColor = true;
+        	this.radioButtonDataBits8.AutoSize = true;
+        	this.radioButtonDataBits8.Checked = true;
+        	this.radioButtonDataBits8.Location = new System.Drawing.Point(187, 3);
+        	this.radioButtonDataBits8.Name = "radioButtonDataBits8";
+        	this.radioButtonDataBits8.Size = new System.Drawing.Size(31, 17);
+        	this.radioButtonDataBits8.TabIndex = 17;
+        	this.radioButtonDataBits8.TabStop = true;
+        	this.radioButtonDataBits8.Text = "8";
+        	this.radioButtonDataBits8.UseVisualStyleBackColor = true;
         	// 
-        	// radioButton2
+        	// radioButtonDataBits7
         	// 
-        	this.radioButton2.AutoSize = true;
-        	this.radioButton2.Location = new System.Drawing.Point(150, 3);
-        	this.radioButton2.Name = "radioButton2";
-        	this.radioButton2.Size = new System.Drawing.Size(31, 17);
-        	this.radioButton2.TabIndex = 16;
-        	this.radioButton2.Text = "7";
-        	this.radioButton2.UseVisualStyleBackColor = true;
+        	this.radioButtonDataBits7.AutoSize = true;
+        	this.radioButtonDataBits7.Location = new System.Drawing.Point(150, 3);
+        	this.radioButtonDataBits7.Name = "radioButtonDataBits7";
+        	this.radioButtonDataBits7.Size = new System.Drawing.Size(31, 17);
+        	this.radioButtonDataBits7.TabIndex = 16;
+        	this.radioButtonDataBits7.Text = "7";
+        	this.radioButtonDataBits7.UseVisualStyleBackColor = true;
         	// 
-        	// radioButton1
+        	// radioButtonDataBits6
         	// 
-        	this.radioButton1.AutoSize = true;
-        	this.radioButton1.Location = new System.Drawing.Point(113, 3);
-        	this.radioButton1.Name = "radioButton1";
-        	this.radioButton1.Size = new System.Drawing.Size(31, 17);
-        	this.radioButton1.TabIndex = 15;
-        	this.radioButton1.Text = "6";
-        	this.radioButton1.UseVisualStyleBackColor = true;
+        	this.radioButtonDataBits6.AutoSize = true;
+        	this.radioButtonDataBits6.Location = new System.Drawing.Point(113, 3);
+        	this.radioButtonDataBits6.Name = "radioButtonDataBits6";
+        	this.radioButtonDataBits6.Size = new System.Drawing.Size(31, 17);
+        	this.radioButtonDataBits6.TabIndex = 15;
+        	this.radioButtonDataBits6.Text = "6";
+        	this.radioButtonDataBits6.UseVisualStyleBackColor = true;
         	// 
         	// radioButtonDataBits5
         	// 
@@ -386,6 +386,7 @@
         	this.comboBoxBaudRate.TabIndex = 11;
         	this.comboBoxBaudRate.Text = "19200";
         	this.toolTip.SetToolTip(this.comboBoxBaudRate, "Port names");
+        	this.comboBoxBaudRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ComboBoxBaudRateKeyPress);
         	// 
         	// comboBoxPortNames
         	// 
@@ -606,10 +607,10 @@
         	this.mnuMain.ResumeLayout(false);
         	this.mnuMain.PerformLayout();
         	this.groupBoxDeviceSettings.ResumeLayout(false);
-        	this.panel5.ResumeLayout(false);
-        	this.panel5.PerformLayout();
-        	this.panel2.ResumeLayout(false);
-        	this.panel2.PerformLayout();
+        	this.panelStopBits.ResumeLayout(false);
+        	this.panelStopBits.PerformLayout();
+        	this.panelDataBits.ResumeLayout(false);
+        	this.panelDataBits.PerformLayout();
         	this.panel3.ResumeLayout(false);
         	this.panel3.PerformLayout();
         	this.groupBoxDeviceActivities.ResumeLayout(false);
@@ -629,10 +630,10 @@
         private System.Windows.Forms.ComboBox comboBoxHandshake;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton12;
-        private System.Windows.Forms.RadioButton radioButton11;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.RadioButton radioButtonStopBits1;
+        private System.Windows.Forms.RadioButton radioButtonStopBits15;
+        private System.Windows.Forms.RadioButton radioButtonStopBits2;
+        private System.Windows.Forms.Panel panelStopBits;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
@@ -640,10 +641,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButtonDataBits5;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButtonDataBits6;
+        private System.Windows.Forms.RadioButton radioButtonDataBits7;
+        private System.Windows.Forms.RadioButton radioButtonDataBits8;
+        private System.Windows.Forms.Panel panelDataBits;
         private System.Windows.Forms.Button buttonTestBot;
         private System.Windows.Forms.RadioButton radioStringMessage;
         private System.Windows.Forms.RadioButton radioHexMessage;

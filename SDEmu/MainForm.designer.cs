@@ -602,6 +602,7 @@
         	this.Padding = new System.Windows.Forms.Padding(3);
         	this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         	this.Text = "Serial Device Emulator";
+        	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
         	this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
         	this.Load += new System.EventHandler(this.MainForm_Load);
         	this.mnuMain.ResumeLayout(false);

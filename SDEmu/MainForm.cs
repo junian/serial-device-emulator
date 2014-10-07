@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using ICSharpCode.TextEditor.Document;
-using Net.Junian.SDEmu.Properties;
 using System.IO.Ports;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+
+using ICSharpCode.TextEditor.Document;
 using Net.Junian.SDEmu.Lib;
+using Net.Junian.SDEmu.Properties;
 
 namespace Net.Junian.SDEmu
 {
@@ -167,13 +169,19 @@ namespace Net.Junian.SDEmu
         private void CloseSerialPort()
         {
             try
-            {
-                serialPort.Close();
-            }
-            catch (Exception ex)
-            {
-                ViewError(ex);
-            }
+			{
+				if(serialPort.IsOpen)
+				{
+					serialPort.DiscardOutBuffer();
+					serialPort.DiscardInBuffer();
+					serialPort.Close();
+				}
+			}
+			catch(Exception ex)
+			{
+				ViewError(ex);
+				return;
+			}
         }
 
         /// <summary>
@@ -331,7 +339,6 @@ namespace Net.Junian.SDEmu
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             SaveSettings();
-            CloseSerialPort();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -373,12 +380,19 @@ namespace Net.Junian.SDEmu
                 }
                 else
                 {
-                    CloseSerialPort();
-                    textLog.AppendText(FormatLogMessage("INFO", labelSelectedPort.Text + " closed"));
-                    SetSelectedPortLabel("-");
-                    buttonRun.Text = "&Run";
-                    buttonRun.Image = Resources.IconPlay;
-                    IdleModeControlState();
+                	var thread = new Thread(delegate()
+                    {
+	                    CloseSerialPort();
+	                    this.Invoke((MethodInvoker) delegate()
+                     	{
+		                    textLog.AppendText(FormatLogMessage("INFO", labelSelectedPort.Text + " closed"));
+		                    SetSelectedPortLabel("-");
+		                    buttonRun.Text = "&Run";
+		                    buttonRun.Image = Resources.IconPlay;
+		                    IdleModeControlState();
+                        });
+                	});
+                	thread.Start();
                 }
             }
             catch (Exception ex)
@@ -424,11 +438,17 @@ namespace Net.Junian.SDEmu
         
         void ComboBoxBaudRateKeyPress(object sender, KeyPressEventArgs e)
         {
-        	if (!char.IsControl(e.KeyChar) 
-		        && !char.IsDigit(e.KeyChar) )
+        	if(!char.IsControl(e.KeyChar) 
+		        && !char.IsDigit(e.KeyChar))
 		    {
 		        e.Handled = true;
 		    }
+        }
+        
+        void MainFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+        	var thr = new Thread(CloseSerialPort);
+			thr.Start();
         }
     }
 }

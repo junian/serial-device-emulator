@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Text;
@@ -9,8 +10,9 @@ using System.Threading;
 using System.Windows.Forms;
 
 using ICSharpCode.TextEditor.Document;
-using Net.Junian.SDEmu.Lib;
+using Net.Junian.SDEmu.Configs;
 using Net.Junian.SDEmu.Properties;
+using Net.Junian.SDEmu.Utilities;
 
 namespace Net.Junian.SDEmu
 {
@@ -24,6 +26,8 @@ namespace Net.Junian.SDEmu
         private static log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private delegate void DataReceived(byte[] message);
         private DataReceived dataReceived;
+        private BindingSource bindingSource;
+        private BindingSource serialSettingBindingSource;
 
         #endregion
 
@@ -70,6 +74,21 @@ namespace Net.Junian.SDEmu
         		}
         		return DefaultSerialDataBits;
         	}
+        	set
+        	{
+        		foreach(var control in panelDataBits.Controls)
+        		{
+        			if(control is RadioButton)
+        			{
+        				var radioButton = (RadioButton) control;
+        				if(int.Parse(radioButton.Text) == value)
+        				{
+        					radioButton.Checked = true;
+        					return;
+        				}
+        			}
+        		}
+        	}
         }
         
         public StopBits SerialStopBits
@@ -86,6 +105,21 @@ namespace Net.Junian.SDEmu
         			}
         		}
         		return DefaultSerialStopBits;
+        	}
+        	set
+        	{
+        		foreach(var control in panelStopBits.Controls)
+        		{
+        			if(control is RadioButton)
+        			{
+        				var radioButton = (RadioButton) control;
+        				if(value == (StopBits) radioButton.Tag)
+        				{
+        					radioButton.Checked = true;
+        					return;
+        				}
+        			}
+        		}
         	}
         }
         
@@ -231,7 +265,7 @@ namespace Net.Junian.SDEmu
 
         private void ViewReceivedMessage(byte[] msgBytes)
         {
-        	var message = radioStringMessage.Checked ? ComDataConverter.BytesToString(msgBytes) : ComDataConverter.BytesToHexString(msgBytes);
+        	var message = radioStringMessage.Checked ? SerialDataConverter.BytesToString(msgBytes) : SerialDataConverter.BytesToHexString(msgBytes);
             Log.Warn("[RECEIVED] " + message);
             textLog.AppendText(FormatLogMessage("RECEIVED", message));
             if (Settings.Default.DeviceBotEnabled)
@@ -256,7 +290,7 @@ namespace Net.Junian.SDEmu
             				checkBoxLF.Checked == true ? "\n" : string.Empty));
             	else if(radioHexMessage.Checked)
             	{
-            		var byteArr = ComDataConverter.HexStringToBytes(message);
+            		var byteArr = SerialDataConverter.HexStringToBytes(message);
             		
             		var listOfBytes = new List<byte>();
             		listOfBytes.AddRange(byteArr);
@@ -266,7 +300,7 @@ namespace Net.Junian.SDEmu
             			listOfBytes.Add(0x0A);
             		byteArr = listOfBytes.ToArray();
             		
-            		message = ComDataConverter.BytesToHexString(byteArr);
+            		message = SerialDataConverter.BytesToHexString(byteArr);
             		serialPort.Write(byteArr, 0, byteArr.Length);
             	}
                 Log.Warn("[SEND] " + message);
@@ -313,6 +347,7 @@ namespace Net.Junian.SDEmu
         {
             LoadSettings();
             LoadPortNames();
+            
             textLog.AppendText(FormatLogMessage("INFO", "application started"));
             SetSelectedPortLabel("-");
             dataReceived = new DataReceived(ViewReceivedMessage);
@@ -326,6 +361,20 @@ namespace Net.Junian.SDEmu
             radioButtonStopBits1.Tag = StopBits.One;
             radioButtonStopBits15.Tag = StopBits.OnePointFive;
             radioButtonStopBits2.Tag = StopBits.Two;
+            
+            AppSettings.Instance.LoadCurrentAppSettings();
+            
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = AppSettings.Instance.SDEmuSetting;
+            serialSettingBindingSource = new BindingSource();
+            serialSettingBindingSource.DataSource = AppSettings.Instance.SDEmuSetting.SerialSetting;
+            
+            this.DataBindings.Add("SerialStopBits", serialSettingBindingSource, "StopBits");
+            this.DataBindings.Add("SerialDataBits", serialSettingBindingSource, "DataBits");
+            
+            comboBoxBaudRate.DataBindings.Add("Text", serialSettingBindingSource, "BaudRate");
+            comboBoxParity.DataBindings.Add("SelectedItem", serialSettingBindingSource, "Parity");
+            comboBoxHandshake.DataBindings.Add("SelectedItem", serialSettingBindingSource, "Handshake");
         }
 
         private void alwaysOnTopToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
@@ -432,7 +481,7 @@ namespace Net.Junian.SDEmu
         {
         	if(!Settings.Default.DeviceBotEnabled)
         		return;
-        	var message = ComDataConverter.StringToBytes(textSendMessage.Text);
+        	var message = SerialDataConverter.StringToBytes(textSendMessage.Text);
 			this.Invoke(dataReceived, message);        	
         }
         
@@ -447,8 +496,12 @@ namespace Net.Junian.SDEmu
         
         void MainFormFormClosing(object sender, FormClosingEventArgs e)
         {
+        	AppSettings.Instance.SDEmuSetting.SerialSetting.DataBits = SerialDataBits;
+        	AppSettings.Instance.SDEmuSetting.SerialSetting.StopBits = SerialStopBits;
+        	AppSettings.Instance.SaveCurrentAppSettings();
         	var thr = new Thread(CloseSerialPort);
 			thr.Start();
         }
+        
     }
 }

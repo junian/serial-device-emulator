@@ -596,7 +596,6 @@
         	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         	this.Location = new System.Drawing.Point(-1, -1);
         	this.MainMenuStrip = this.mnuMain;
-        	this.MaximizeBox = false;
         	this.MinimumSize = new System.Drawing.Size(640, 480);
         	this.Name = "MainForm";
         	this.Padding = new System.Windows.Forms.Padding(3);

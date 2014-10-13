@@ -42,15 +42,22 @@ namespace Net.Junian.SDEmu.Configs
 		private AppSettings()
 		{
 			this.SDEmuSetting = new SDEmuSetting();
+			
 			this.LocalAppSettingsPath = 
 				string.Format("{0}\\{1}\\{2}",
 				Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
 				Application.CompanyName,
 				Application.ProductName);
+			
 			this.CurrentAppSettingsPath = 
 				string.Format("{0}\\{1}.sdemu",
 	              this.LocalAppSettingsPath,
 	              HashEngine.MD5Hash("current-sdemu-setting"));
+			
+			if(!Directory.Exists(LocalAppSettingsPath))
+			{
+				Directory.CreateDirectory(LocalAppSettingsPath);
+			}
 		}
 		
 		public void LoadCurrentAppSettings()

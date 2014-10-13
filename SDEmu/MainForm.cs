@@ -375,6 +375,12 @@ namespace Net.Junian.SDEmu
             comboBoxBaudRate.DataBindings.Add("Text", serialSettingBindingSource, "BaudRate");
             comboBoxParity.DataBindings.Add("SelectedItem", serialSettingBindingSource, "Parity");
             comboBoxHandshake.DataBindings.Add("SelectedItem", serialSettingBindingSource, "Handshake");
+            
+            radioStringMessage.DataBindings.Add("Checked", bindingSource, "IsStringMode");
+            radioHexMessage.DataBindings.Add("Checked", bindingSource, "IsHexMode");
+            
+            checkBoxCR.DataBindings.Add("Checked", bindingSource, "IsEndedWithCR");
+            checkBoxLF.DataBindings.Add("Checked", bindingSource, "IsEndedWithLF");
         }
 
         private void alwaysOnTopToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)

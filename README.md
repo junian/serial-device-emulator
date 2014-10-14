@@ -18,6 +18,12 @@ How to use:
 
 If you have any further question, please let me know.
 
+# Credits
+
+This open source project is funded by 35 Engineering.
+
+[![35e][35e]](http://35engineering.com)
+
 # License
 
 This project is licensed under [BSD 2-clause][bsd2]
@@ -26,3 +32,4 @@ This project is licensed under [BSD 2-clause][bsd2]
 [vspe]: http://www.eterlogic.com/Products.VSPE.html
 [googlecode]: https://code.google.com/p/sdemu/
 [sdemu]: https://raw.github.com/junian/SerialDeviceEmu/gh-pages/img/screenshots/sdemu-01.jpg "SDEmu"
+[35e]: http://35engineering.com/wp-content/uploads/2013/07/35-color-web.png "35 Engineering"

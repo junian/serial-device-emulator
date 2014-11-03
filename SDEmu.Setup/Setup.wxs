@@ -62,11 +62,11 @@
 				      Source="..\SDEmu\bin\Release\log4net.dll" 
 				      KeyPath="yes" />
 			</Component>
-			<Component Id="ICSharpCodeTextEditorDll" 
+			<Component Id="FastColoredTextBoxDll" 
 			           Guid="*" DiskId="1">
-				<File Id="ICSharpCode.TextEditor.dll" 
-				      Name="ICSharpCode.TextEditor.dll" 
-				      Source="..\SDEmu\bin\Release\ICSharpCode.TextEditor.dll" 
+				<File Id="FastColoredTextBox.dll" 
+				      Name="FastColoredTextBox.dll" 
+				      Source="..\SDEmu\bin\Release\FastColoredTextBox.dll" 
 				      KeyPath="yes" />
 			</Component>
         </DirectoryRef>
@@ -106,7 +106,7 @@
             <ComponentRef Id="SDEmuExe" />
             <ComponentRef Id="SDEmuExeConfig" />
 			<ComponentRef Id="log4netDll" />
-			<ComponentRef Id="ICSharpCodeTextEditorDll" /> 
+			<ComponentRef Id="FastColoredTextBoxDll" /> 
 			<ComponentRef Id="ApplicationShortcut" />   
         </Feature>
 		

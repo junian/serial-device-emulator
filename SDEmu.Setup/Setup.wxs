@@ -1,0 +1,134 @@
+﻿<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*"
+		Name="$(var.AppName)"
+		Language="1033"
+		Version="$(var.ProductVersion)"
+		UpgradeCode="$(var.UpgradeCode)"
+		Manufacturer="Junian.Net">
+		
+		<Package Description="Serial Device Emu by Junian.Net"
+			Comments= "Serial Device Emu by Junian.Net"
+			InstallerVersion="200"
+			Compressed="yes"
+			InstallScope="perMachine"
+			InstallPrivileges="elevated"
+		/>
+		
+		<Property Id="OLDERVERSIONBEINGUPGRADED" Secure="yes" />
+		<Upgrade Id="$(var.UpgradeCode)"> 
+		    <UpgradeVersion Minimum="$(var.ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" /> 
+		    <UpgradeVersion Minimum="0.0.0" IncludeMinimum="yes" Maximum="$(var.ProductVersion)" IncludeMaximum="no" Property="OLDERVERSIONBEINGUPGRADED" /> 
+		</Upgrade>
+		
+		<Media Id="1" Cabinet="contents.cab" 
+		       EmbedCab="yes" CompressionLevel="high"/>
+		
+		<Icon Id="ProductIcon" SourceFile="..\icon.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
+		<Property Id="ARPHELPLINK" Value="http://junian.net"/>
+		<Property Id="ARPURLINFOABOUT" Value="http://junian.net"/>
+		
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+                <Directory Id="APPLICATIONROOTDIRECTORY" Name="Serial Device Emu">
+				</Directory>
+            </Directory>
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ApplicationProgramsFolder" Name="Serial Device Emu">
+            	</Directory>
+            </Directory>
+		</Directory>
+		
+		<DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+            <Component Id="SDEmuExe" 
+			           Guid="*" DiskId="1">
+				<File Id="SDEmu.exe" 
+				      Name="SDEmu.exe" 
+				      Source="..\SDEmu\bin\Release\SDEmu.exe" 
+				      KeyPath="yes" />
+			</Component>
+			<Component Id="SDEmuExeConfig"
+			           Guid="*" DiskId="1">
+				<File Id="SDEmu.exe.config" 
+				      Name="SDEmu.exe.config" 
+				      Source="..\SDEmu\bin\Release\SDEmu.exe.config" 
+				      KeyPath="yes" />
+			</Component>
+			<Component Id="log4netDll" 
+			           Guid="*" DiskId="1">
+				<File Id="log4net.dll" 
+				      Name="log4net.dll" 
+				      Source="..\SDEmu\bin\Release\log4net.dll" 
+				      KeyPath="yes" />
+			</Component>
+			<Component Id="FastColoredTextBoxDll" 
+			           Guid="*" DiskId="1">
+				<File Id="FastColoredTextBox.dll" 
+				      Name="FastColoredTextBox.dll" 
+				      Source="..\SDEmu\bin\Release\FastColoredTextBox.dll" 
+				      KeyPath="yes" />
+			</Component>
+        </DirectoryRef>
+		
+		<DirectoryRef Id="ApplicationProgramsFolder">
+            <Component Id="ApplicationShortcut" 
+                       Guid="*">
+            	<!--<RemoveFolder Id="RemoveProgramMenuDir" Directory="ProgramMenuSubfolder" On="uninstall"/>-->
+            	<RemoveFolder Id="RemoveApplicationProgramsFolder" 
+            	              Directory="ApplicationProgramsFolder"
+                              On="uninstall"/>
+                <Shortcut Id="ApplicationStartMenuShortcut" 
+                          Name="Serial Device Emu"
+                          Description="Serial Device Emu by Junian.Net"
+                          Target="[#SDEmu.exe]"
+                          Icon="ProductIcon"
+                          WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+            	
+            	<Shortcut Id="UninstallProduct"             
+                          Name="Uninstall Serial Device Emu"
+                          Description="Uninstalls Serial Device Emu"
+                          Target="[SystemFolder]msiexec.exe"
+                          Arguments="/x [ProductCode]"/>
+            	
+                <RegistryValue Root="HKCU" 
+                               Key="Software\Microsoft\Junian.Net\SDEmu"
+                               Name="installed" Type="integer"
+                               Value="1" KeyPath="yes"/>
+           </Component>
+        </DirectoryRef>
+		
+		<InstallExecuteSequence>
+			<RemoveExistingProducts Before="InstallInitialize" />
+		</InstallExecuteSequence>
+		
+		<Feature Id="MainApplication" Title="Main Application" Level="1">
+            <ComponentRef Id="SDEmuExe" />
+            <ComponentRef Id="SDEmuExeConfig" />
+			<ComponentRef Id="log4netDll" />
+			<ComponentRef Id="FastColoredTextBoxDll" /> 
+			<ComponentRef Id="ApplicationShortcut" />   
+        </Feature>
+		
+		<UI>
+	        <UIRef Id="WixUI_Minimal" />
+	        <Publish Dialog="ExitDialog" 
+	            Control="Finish" 
+	            Event="DoAction" 
+	            Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+	    </UI>
+	    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" 
+	              Value="Launch Serial Device Emu" />
+		
+		<Property Id="WixShellExecTarget" Value="[#SDEmu.exe]" />
+	    <CustomAction Id="LaunchApplication" 
+	        BinaryKey="WixCA" 
+	        DllEntry="WixShellExec"
+	        Impersonate="yes" />
+		
+		<PropertyRef Id="NETFRAMEWORK40FULL"/>
+		<Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again. For more information, you can contact admin@junian.net.">
+			<![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+		</Condition>
+	</Product>
+</Wix>

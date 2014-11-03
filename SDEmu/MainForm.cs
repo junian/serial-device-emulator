@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using ICSharpCode.TextEditor.Document;
 using Net.Junian.SDEmu.Configs;
 using Net.Junian.SDEmu.Properties;
 using Net.Junian.SDEmu.Utilities;

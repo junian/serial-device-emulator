@@ -109,7 +109,7 @@ namespace Net.Junian.SDEmu
                 }
                 catch (Exception ex)
                 {
-                    //throw ex;
+                	ex.GetType();
                     return false;
                 }
                 IsCompiled = true;

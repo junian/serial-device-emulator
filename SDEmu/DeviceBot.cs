@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 
 using FastColoredTextBoxNS;
-using ICSharpCode.TextEditor.Document;
 using Net.Junian.SDEmu.Properties;
 
 namespace Net.Junian.SDEmu

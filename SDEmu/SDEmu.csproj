@@ -74,9 +74,6 @@
     <Reference Include="FastColoredTextBox">
       <HintPath>..\packages\FCTB.2.16.1.1\lib\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.TextEditor">
-      <HintPath>lib\ICSharpCode.TextEditor.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net20-full\log4net.dll</HintPath>
     </Reference>

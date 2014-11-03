@@ -1,12 +1,14 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+
+using FastColoredTextBoxNS;
 using ICSharpCode.TextEditor.Document;
-using System.CodeDom.Compiler;
 using Net.Junian.SDEmu.Properties;
 
 namespace Net.Junian.SDEmu
@@ -81,15 +83,15 @@ namespace Net.Junian.SDEmu
         private void DeviceBot_Load(object sender, EventArgs e)
         {
             LoadData();
-            txtBotEditor.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("C#");
-            txtBotEditor.TextChanged += new EventHandler(txtBotEditor_TextChanged);
+            //txtBotEditor.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy("C#");
+            txtBotEditor.TextChanged += new EventHandler<TextChangedEventArgs>(txtBotEditor_TextChanged);
             
             sdemuScript = new SDEmuScript();
         }
 
-        void txtBotEditor_TextChanged(object sender, EventArgs e)
+        void txtBotEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
-            compiled = false;
+        	compiled = false;
             lblCompiled.Visible = false;
         }
 

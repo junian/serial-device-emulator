@@ -25,7 +25,7 @@
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
     <Optimize>True</Optimize>
-	<DefineConstants>ProductVersion=0.5.5;UpgradeCode=1D32E0B8-D829-4969-B546-FA57B6ED7189;AppName=Serial Device Emu</DefineConstants>
+	<DefineConstants>ProductVersion=0.6.0;UpgradeCode=1D32E0B8-D829-4969-B546-FA57B6ED7189;AppName=Serial Device Emu</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Setup.wxs" />

@@ -77,6 +77,7 @@
         	this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
         	this.panel1 = new System.Windows.Forms.Panel();
         	this.groupBox1 = new System.Windows.Forms.GroupBox();
+        	this.splitContainer1 = new System.Windows.Forms.SplitContainer();
         	this.mnuMain.SuspendLayout();
         	this.groupBoxDeviceSettings.SuspendLayout();
         	this.panelStopBits.SuspendLayout();
@@ -86,6 +87,9 @@
         	this.panel6.SuspendLayout();
         	this.panel1.SuspendLayout();
         	this.groupBox1.SuspendLayout();
+        	this.splitContainer1.Panel1.SuspendLayout();
+        	this.splitContainer1.Panel2.SuspendLayout();
+        	this.splitContainer1.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// mnuMain
@@ -439,8 +443,7 @@
         	// 
         	// groupBoxDeviceActivities
         	// 
-        	this.groupBoxDeviceActivities.Controls.Add(this.textLog);
-        	this.groupBoxDeviceActivities.Controls.Add(this.panel6);
+        	this.groupBoxDeviceActivities.Controls.Add(this.splitContainer1);
         	this.groupBoxDeviceActivities.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.groupBoxDeviceActivities.Enabled = false;
         	this.groupBoxDeviceActivities.Location = new System.Drawing.Point(236, 27);
@@ -453,12 +456,12 @@
         	// textLog
         	// 
         	this.textLog.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.textLog.Location = new System.Drawing.Point(3, 106);
+        	this.textLog.Location = new System.Drawing.Point(0, 0);
         	this.textLog.Multiline = true;
         	this.textLog.Name = "textLog";
         	this.textLog.ReadOnly = true;
         	this.textLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-        	this.textLog.Size = new System.Drawing.Size(379, 302);
+        	this.textLog.Size = new System.Drawing.Size(379, 288);
         	this.textLog.TabIndex = 14;
         	this.toolTip.SetToolTip(this.textLog, "COM Device Activites Log");
         	// 
@@ -471,10 +474,10 @@
         	this.panel6.Controls.Add(this.textSendMessage);
         	this.panel6.Controls.Add(this.radioHexMessage);
         	this.panel6.Controls.Add(this.buttonSend);
-        	this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-        	this.panel6.Location = new System.Drawing.Point(3, 16);
+        	this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.panel6.Location = new System.Drawing.Point(0, 0);
         	this.panel6.Name = "panel6";
-        	this.panel6.Size = new System.Drawing.Size(379, 90);
+        	this.panel6.Size = new System.Drawing.Size(379, 100);
         	this.panel6.TabIndex = 20;
         	// 
         	// checkBoxLF
@@ -521,12 +524,13 @@
         	// 
         	// textSendMessage
         	// 
-        	this.textSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+        	this.textSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+        	        	        	| System.Windows.Forms.AnchorStyles.Left) 
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
         	this.textSendMessage.Location = new System.Drawing.Point(6, 31);
         	this.textSendMessage.Multiline = true;
         	this.textSendMessage.Name = "textSendMessage";
-        	this.textSendMessage.Size = new System.Drawing.Size(287, 52);
+        	this.textSendMessage.Size = new System.Drawing.Size(287, 65);
         	this.textSendMessage.TabIndex = 12;
         	this.toolTip.SetToolTip(this.textSendMessage, "Message to send");
         	// 
@@ -585,6 +589,25 @@
         	this.groupBox1.TabStop = false;
         	this.groupBox1.Text = "Device Selection";
         	// 
+        	// splitContainer1
+        	// 
+        	this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.splitContainer1.Location = new System.Drawing.Point(3, 16);
+        	this.splitContainer1.Name = "splitContainer1";
+        	this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+        	// 
+        	// splitContainer1.Panel1
+        	// 
+        	this.splitContainer1.Panel1.Controls.Add(this.panel6);
+        	this.splitContainer1.Panel1MinSize = 100;
+        	// 
+        	// splitContainer1.Panel2
+        	// 
+        	this.splitContainer1.Panel2.Controls.Add(this.textLog);
+        	this.splitContainer1.Size = new System.Drawing.Size(379, 392);
+        	this.splitContainer1.SplitterDistance = 100;
+        	this.splitContainer1.TabIndex = 21;
+        	// 
         	// MainForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -614,14 +637,18 @@
         	this.panel3.ResumeLayout(false);
         	this.panel3.PerformLayout();
         	this.groupBoxDeviceActivities.ResumeLayout(false);
-        	this.groupBoxDeviceActivities.PerformLayout();
         	this.panel6.ResumeLayout(false);
         	this.panel6.PerformLayout();
         	this.panel1.ResumeLayout(false);
         	this.groupBox1.ResumeLayout(false);
+        	this.splitContainer1.Panel1.ResumeLayout(false);
+        	this.splitContainer1.Panel2.ResumeLayout(false);
+        	this.splitContainer1.Panel2.PerformLayout();
+        	this.splitContainer1.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBoxParity;
         private System.Windows.Forms.CheckBox checkBoxCR;

@@ -1,1 +1,4 @@
+title: Serial Device Emulator
+description: Scriptable COM Port Data Emulator Built with C#
 theme: jekyll-theme-slate
+show_downloads: true

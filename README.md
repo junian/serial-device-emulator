@@ -20,9 +20,7 @@ If you have any further question, please let me know.
 
 # Credits
 
-This open source project is funded by 35 Engineering.
-
-[![35e][35e]](http://35engineering.com)
+This open source project is funded by [35 Engineering](http://35engineering.com).
 
 # License
 

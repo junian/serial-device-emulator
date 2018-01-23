@@ -1,5 +1,7 @@
 # SerialDeviceEmu (SDEmu)
 
+**This project is obsolete, a new successor is being developed. You can see [TermSharp here](https://github.com/JunianNet/TermSharp)**.
+
 Serial Device Emulator Built with C#.
 Emulate your Serial Device to communicate it through serial port.
 This project is migration from [Google Code][googlecode] repository.

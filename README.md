@@ -22,7 +22,7 @@ If you have any further question, please let me know.
 
 # Credits
 
-This open source project is funded by [35 Engineering](http://35engineering.com).
+Special thanks to JB from [35 Engineering](http://35engineering.com) for sponsoring development of this project.
 
 # License
 

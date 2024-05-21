@@ -1,7 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-# SharpDevelop 4.4
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDEmu", "SDEmu\SDEmu.csproj", "{9B7DC268-EAAB-4B8D-AA25-2A4C9F0F363A}"
 EndProject
 Project("{CFEE4113-1246-4D54-95CB-156813CB8593}") = "SDEmu.Setup", "SDEmu.Setup\SDEmu.Setup.wixproj", "{8C223CFA-3D5B-441C-BA04-C42BD1868665}"
@@ -26,20 +27,23 @@ Global
 		{9B7DC268-EAAB-4B8D-AA25-2A4C9F0F363A}.Release|Mixed Platforms.Build.0 = Release|x86
 		{9B7DC268-EAAB-4B8D-AA25-2A4C9F0F363A}.Release|x86.ActiveCfg = Release|x86
 		{9B7DC268-EAAB-4B8D-AA25-2A4C9F0F363A}.Release|x86.Build.0 = Release|x86
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|x86.Build.0 = Debug|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Debug|x86.Build.0 = Debug|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|x86.Build.0 = Release|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|x86.ActiveCfg = Release|Any CPU
+		{8C223CFA-3D5B-441C-BA04-C42BD1868665}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BEEE3A1-3D80-4FAA-822D-AF214954491C}
 	EndGlobalSection
 EndGlobal

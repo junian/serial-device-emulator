@@ -107,7 +107,7 @@ namespace Juniansoft.SDEmu.Setup
                         "wix",
                         assembly.Configuration,
                         TargetFramework,
-                        $"{assembly.Product.Replace(" ", "")}-{b.Key.ToLower()}-v{assembly.Version.ToString(3)}.msi"));
+                        $"{assembly.Product.Replace(" ", "")}-v{assembly.Version.ToString(3)}-{b.Key.ToLower()}.msi"));
 
             }
         }

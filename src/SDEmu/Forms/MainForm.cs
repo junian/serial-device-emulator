@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
@@ -350,9 +352,25 @@ namespace Juniansoft.SDEmu.Forms
 
             _assemblyService = AssemblyService.Current;
 
+            UpgradeSettings();
+
             this.Icon = Resources.Favicon;
             this.notifyIcon.Icon = Resources.Favicon;
             this.Text = $"{_assemblyService.Product} ({_assemblyService.Arch}) - v{_assemblyService.Version.ToString(3)}";
+        }
+
+        private void UpgradeSettings()
+        {
+            var configPath = ConfigurationManager
+                .OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal)
+                .FilePath;
+            if (!File.Exists(configPath))
+            {
+                //Existing user config does not exist, so load settings from previous assembly
+                Settings.Default.Upgrade();
+                Settings.Default.Reload();
+                Settings.Default.Save();
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)

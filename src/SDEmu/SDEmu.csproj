@@ -9,7 +9,7 @@
     <RootNamespace>Juniansoft.SDEmu</RootNamespace>
 
     <AssemblyName>SDEmu</AssemblyName>
-    <AssemblyTitle>Serial Device Emu</AssemblyTitle>
+    <AssemblyTitle>SDEmu</AssemblyTitle>
     <Title>$(AssemblyTitle)</Title>
     <Copyright>Copyright (c) 2011 - 2024</Copyright>
     <Description>Serial Device Emu is an emulator for your Serial Port project. It emulates the behaviour of real serial device. This project is available at https://github.com/junian/serial-device-emulator</Description>
@@ -17,8 +17,10 @@
     <Company>Juniansoft</Company>
     <Product>Serial Device Emu</Product>
 
+    <!--
 	<DebugSymbols>true</DebugSymbols>
 	<DebugType>full</DebugType>
+    -->
 	  
     <!-- Versions -->
     <AssemblyVersion>1.0.0</AssemblyVersion>

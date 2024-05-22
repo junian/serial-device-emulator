@@ -26,7 +26,7 @@ namespace Juniansoft.SDEmu.Setup
                     new Files(
                         sourcePath: Path.Combine(
                             "..",
-                            $"{assembly.Title}.Win",
+                            $"{assembly.Title}",
                             "bin",
                             assembly.Configuration,
                             TargetFramework,
@@ -46,7 +46,7 @@ namespace Juniansoft.SDEmu.Setup
                         assembly.Product),
                     new ExeFileShortcut(
                         name: $"{assembly.Product}",
-                        target: Path.Combine(InstallDir, $"{assembly.Title}.Win.exe"),
+                        target: Path.Combine(InstallDir, $"{assembly.Title}.exe"),
                         arguments: "")
                     {
                         WorkingDirectory = InstallDir

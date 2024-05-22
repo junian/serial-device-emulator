@@ -9,7 +9,7 @@
 using System;
 using System.IO.Ports;
 
-namespace Net.Junian.SDEmu.Models
+namespace Juniansoft.SDEmu.Models
 {
 	/// <summary>
 	/// Description of SerialSetting.

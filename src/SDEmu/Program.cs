@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 [assembly:log4net.Config.XmlConfigurator(Watch=true)]
 
-namespace Net.Junian.SDEmu
+namespace Juniansoft.SDEmu
 {
     static class Program
     {

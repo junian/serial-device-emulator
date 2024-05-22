@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Net.Junian.SDEmu
+namespace Juniansoft.SDEmu
 {
     partial class AboutBox : Form
     {

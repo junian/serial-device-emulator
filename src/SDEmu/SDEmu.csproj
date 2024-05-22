@@ -1,70 +1,63 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net20</TargetFramework>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Net.Junian.SDEmu</RootNamespace>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NoWin32Manifest>False</NoWin32Manifest>
-    <DelaySign>False</DelaySign>
-    <NoStdLib>False</NoStdLib>
-    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFramework>net462</TargetFramework>
+    <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Net.Junian.SDEmu.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <RootNamespace>Juniansoft.SDEmu</RootNamespace>
+
+    <AssemblyName>SDEmu</AssemblyName>
+    <AssemblyTitle>Serial Device Emu</AssemblyTitle>
+    <Title>$(AssemblyTitle)</Title>
+    <Copyright>Copyright (c) 2011 - 2024</Copyright>
+    <Description>Serial Device Emu is an emulator for your Serial Port project. It emulates the behaviour of real serial device. This project is available at https://github.com/junian/serial-device-emulator</Description>
+    <Authors>junian</Authors>
+    <Company>Juniansoft</Company>
+    <Product>Serial Device Emu</Product>
+
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	  
+    <!-- Versions -->
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <PackageVersion>$(AssemblyVersion)</PackageVersion>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
-    <BaseAddress>4194304</BaseAddress>
-    <RegisterForComInterop>False</RegisterForComInterop>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models" />
-    <Folder Include="Configs" />
-    <Folder Include="Utilities" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="FCTB" Version="2.16.24" />
     <PackageReference Include="log4net" Version="2.0.17" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

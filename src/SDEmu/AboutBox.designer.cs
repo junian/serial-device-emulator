@@ -1,4 +1,4 @@
-﻿namespace Net.Junian.SDEmu
+﻿namespace Juniansoft.SDEmu
 {
     partial class AboutBox
     {

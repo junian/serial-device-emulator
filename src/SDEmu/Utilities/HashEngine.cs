@@ -10,7 +10,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Net.Junian.SDEmu.Utilities
+namespace Juniansoft.SDEmu.Utilities
 {
 	/// <summary>
 	/// Description of HashEngine.

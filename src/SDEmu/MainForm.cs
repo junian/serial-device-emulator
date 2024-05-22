@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using Net.Junian.SDEmu.Configs;
-using Net.Junian.SDEmu.Properties;
-using Net.Junian.SDEmu.Utilities;
+using Juniansoft.SDEmu.Configs;
+using Juniansoft.SDEmu.Properties;
+using Juniansoft.SDEmu.Utilities;
 
-namespace Net.Junian.SDEmu
+namespace Juniansoft.SDEmu
 {
     public partial class MainForm : Form
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Net.Junian.SDEmu.Properties {
+namespace Juniansoft.SDEmu.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -29,6 +29,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="**\*Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FCTB" Version="2.16.24" />
     <PackageReference Include="log4net" Version="2.0.17" />
   </ItemGroup>

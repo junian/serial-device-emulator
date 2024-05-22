@@ -26,6 +26,7 @@ namespace Juniansoft.SDEmu.Services
             _assembly = assembly ?? Assembly.GetExecutingAssembly();
 
             _assemblyName = _assembly?.GetName();
+            _name = _assemblyName?.Name;
             _version = _assemblyName?.Version;
             _location = _assembly?.Location;
             _path = System.IO.Path.GetDirectoryName(_location);
@@ -63,6 +64,10 @@ namespace Juniansoft.SDEmu.Services
                 .FirstOrDefault();
             return getStringFunc?.Invoke(attr) ?? defaultValue;
         }
+
+        private readonly string _name = default;
+        public string Name
+            => _name;
 
         private readonly string _defaultTitle;
         private string _title;

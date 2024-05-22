@@ -17,7 +17,7 @@ namespace Juniansoft.SDEmu.Setup
             var assembly = new AssemblyService(typeof(AssemblyService).Assembly);
 
             var project = new Project(
-                name: $"{assembly.Title}",
+                name: $"{assembly.Name}",
                 new Dir(
                     targetPath: Path.Combine(
                         ProgramFilesDir,
@@ -26,7 +26,7 @@ namespace Juniansoft.SDEmu.Setup
                     new Files(
                         sourcePath: Path.Combine(
                             "..",
-                            $"{assembly.Title}",
+                            $"{assembly.Name}",
                             "bin",
                             assembly.Configuration,
                             TargetFramework,
@@ -46,7 +46,7 @@ namespace Juniansoft.SDEmu.Setup
                         assembly.Product),
                     new ExeFileShortcut(
                         name: $"{assembly.Product}",
-                        target: Path.Combine(InstallDir, $"{assembly.Title}.exe"),
+                        target: Path.Combine(InstallDir, $"{assembly.Name}.exe"),
                         arguments: "")
                     {
                         WorkingDirectory = InstallDir
@@ -78,10 +78,10 @@ namespace Juniansoft.SDEmu.Setup
             project.MajorUpgradeStrategy.RemoveExistingProductAfter = Step.InstallInitialize;
             project.LicenceFile = Path.Combine(".", "LICENSE.rtf");
             project.ResolveWildCards(pruneEmptyDirectories: true)
-                   .FindFirstFile($"{assembly.Title}.exe")
+                   .FindFirstFile($"{assembly.Name}.exe")
                    .Shortcuts = new[]
                    {
-                       new FileShortcut($"{assembly.Title}.exe", "%Desktop%")
+                       new FileShortcut($"{assembly.Name}.exe", "%Desktop%")
                    };
 
             Compiler.PreserveTempFiles = true;
@@ -92,7 +92,7 @@ namespace Juniansoft.SDEmu.Setup
                     "wix",
                     assembly.Configuration,
                     TargetFramework,
-                    $"{assembly.Title}-v{assembly.Version.ToString(3)}.msi"));
+                    $"{assembly.Product}-v{assembly.Version.ToString(3)}.msi"));
 
         }
     }

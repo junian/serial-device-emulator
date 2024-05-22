@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using Juniansoft.SDEmu.Configs;
 using Juniansoft.SDEmu.Properties;
+using Juniansoft.SDEmu.Services;
 using Juniansoft.SDEmu.Utilities;
 
 namespace Juniansoft.SDEmu.Forms
@@ -259,6 +260,10 @@ namespace Juniansoft.SDEmu.Forms
         private void ShowBallon(string message)
         {
             notifyIcon.BalloonTipText = message;
+            notifyIcon.Icon = Resources.Favicon;
+            notifyIcon.BalloonTipTitle = AssemblyService.Current.Product;
+            notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+
             notifyIcon.ShowBalloonTip(250);
         }
 
@@ -334,14 +339,20 @@ namespace Juniansoft.SDEmu.Forms
 
         #endregion
 
+        private readonly AssemblyService _assemblyService;
+
         /// <summary>
         /// main form constructor
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+
+            _assemblyService = AssemblyService.Current;
+
             this.Icon = Resources.Favicon;
             this.notifyIcon.Icon = Resources.Favicon;
+            this.Text = $"{_assemblyService.Product} v{_assemblyService.Version.ToString(3)}";
         }
 
         private void MainForm_Load(object sender, EventArgs e)

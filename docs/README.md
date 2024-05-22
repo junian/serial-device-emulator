@@ -2,7 +2,7 @@
 
 <h1 align="center">Serial Device Emulator (SDEmu)</h1>
 
-<p align="center">Develop your software without the real Serial Port device through C#-Script Emulation.</p>
+<p align="center">Develop your software without the real Serial Port device through C#-Script Emulation. Works for RS-232 and RS-485 devices.</p>
 
 <p align="center">
     <a href="https://github.com/junian/serial-device-emulator/releases"><img src="https://img.shields.io/github/release/junian/serial-device-emulator.svg" alt="Serial Device Emulator latest version on GitHub" title="Serial Device Emulator latest version on GitHub"></a>

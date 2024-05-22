@@ -29,6 +29,8 @@
     <PackageVersion>$(AssemblyVersion)</PackageVersion>
     
     <ApplicationIcon>..\..\assets\Favicon.ico</ApplicationIcon>
+    
+    <Platforms>AnyCPU;ARM64;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

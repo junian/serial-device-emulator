@@ -85,6 +85,7 @@ namespace Juniansoft.SDEmu.Setup
 
                     };
 
+                project.Name = $"{assembly.Product} ({b.Key.ToLower()}) - v{assembly.Version.ToString(3)}";
                 project.Platform = b.Value;
                 if (b.Value == Platform.arm64)
                     project.InstallerVersion = 500;
@@ -106,7 +107,7 @@ namespace Juniansoft.SDEmu.Setup
                         "wix",
                         assembly.Configuration,
                         TargetFramework,
-                        $"{assembly.Name}-{b.Key.ToLower()}-v{assembly.Version.ToString(3)}.msi"));
+                        $"{assembly.Product.Replace(" ", "")}-{b.Key.ToLower()}-v{assembly.Version.ToString(3)}.msi"));
 
             }
         }

@@ -51,7 +51,10 @@ namespace Juniansoft.SDEmu.Services
             if (mach == ImageFileMachine.ARM)
                 return "arm";
 
-            return "";
+            if ((int)mach == 43620)
+                return "arm64";
+
+            return "Unknown";
         }
 
         public PortableExecutableKinds PEKind { get; private set; }

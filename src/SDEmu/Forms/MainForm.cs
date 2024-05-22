@@ -261,7 +261,7 @@ namespace Juniansoft.SDEmu.Forms
         {
             notifyIcon.BalloonTipText = message;
             notifyIcon.Icon = Resources.Favicon;
-            notifyIcon.BalloonTipTitle = AssemblyService.Current.Product;
+            notifyIcon.BalloonTipTitle = _assemblyService.Product;
             notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
 
             notifyIcon.ShowBalloonTip(250);
@@ -352,7 +352,7 @@ namespace Juniansoft.SDEmu.Forms
 
             this.Icon = Resources.Favicon;
             this.notifyIcon.Icon = Resources.Favicon;
-            this.Text = $"{_assemblyService.Product} v{_assemblyService.Version.ToString(3)}";
+            this.Text = $"{_assemblyService.Product} ({_assemblyService.Arch}) - v{_assemblyService.Version.ToString(3)}";
         }
 
         private void MainForm_Load(object sender, EventArgs e)

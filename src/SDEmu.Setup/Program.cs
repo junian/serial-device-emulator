@@ -76,7 +76,7 @@ namespace Juniansoft.SDEmu.Setup
             };
 
             project.MajorUpgradeStrategy.RemoveExistingProductAfter = Step.InstallInitialize;
-
+            project.LicenceFile = Path.Combine("..", "..", "LICENSE.rtf");
             project.ResolveWildCards(pruneEmptyDirectories: true)
                    .FindFirstFile($"{assembly.Title}.exe")
                    .Shortcuts = new[]

@@ -1,36 +1,50 @@
-# Serial Device Emulator (SDEmu)
+<p align="center"><img src="https://raw.githubusercontent.com/junian/serial-device-emulator/gh-pages/img/serial-device-emulator-logo.png" alt="Serial Device Emulator Logo"></p>
+
+<h1 align="center">Serial Device Emulator (SDEmu)</h1>
+
+<p align="center">Develop your software without the real Serial Port device through C#-Script Emulation.</p>
+
+<p align="center">
+    <a href="https://github.com/junian/serial-device-emulator/releases"><img src="https://img.shields.io/github/release/junian/serial-device-emulator.svg" alt="Serial Device Emulator latest version on GitHub" title="Serial Device Emulator latest version on GitHub"></a>
+    <a href="https://github.com/junian/serial-device-emulator/releases"><img src="https://img.shields.io/github/downloads/junian/serial-device-emulator/total.svg" alt="Serial Device Emulator total downloads on GitHub" title="Serial Device Emulator total downloads on GitHub"></a>
+</p>
+
+----
 
 > [!IMPORTANT]
-> This project is obsolete, a new successor is being developed. You can visit [Termission](https://github.com/junian/termission).
+> This project is not actively maintained, a new successor is being developed. You can visit [Termission](https://github.com/junian/termission).
 
-Serial Device Emulator Built with C#.
-Emulate your Serial Device to communicate it through serial port.
-This project is migration from [Google Code][googlecode] repository.
+This project is migrated from the [Google Code][googlecode] repository.
 
-Features:
+## Features
+
 - Manual device control
 - Log everything
 - Auto response using C#-like script language
 
-How to use:
+## Installation and Usage
 
-- First, install [VSPE][vspe] to create virtual Serial Port
-- Download the app, install it, and use it
+- Install [Virtual COM Port](https://en.wikipedia.org/wiki/Virtual_COM_port) driver such as [com0com](https://com0com.sourceforge.net).
+- Download the Serial Device Emulator app and install it normally.
+- Type in a string or hexadecimal message.
+- Write Bot Script in C# by clicking **View** - **Device Bot**.
+- The rest of the features should be self-explanatory.
 
-![sdemu][sdemu]
+![Serial Device Emulator demo](https://raw.githubusercontent.com/junian/serial-device-emulator/gh-pages/img/serial-device-emulator-00.gif)
 
-If you have any further question, please let me know.
+If you have any further questions, please let me know.
 
-# Credits
+## Credits
 
-Special thanks to JB from [35 Engineering](http://35engineering.com) for sponsoring development of this project.
+Special thanks to JB from [35 Engineering](http://35engineering.com) for sponsoring the development of this project.
 
-# License
+## License
 
-This project is licensed under [BSD 2-clause][bsd2]
+This project is licensed under [MIT License](https://github.com/junian/serial-device-emulator/blob/master/LICENSE).
 
-[bsd2]: https://github.com/junian/SerialDeviceEmu/blob/master/LICENSE
-[vspe]: http://www.eterlogic.com/Products.VSPE.html
+---
+
+Made with ☕ by [Junian.dev](https://www.junian.dev).
+
 [googlecode]: https://code.google.com/p/sdemu/
-[sdemu]: https://raw.github.com/junian/SerialDeviceEmu/gh-pages/img/screenshots/sdemu-01.jpg "SDEmu"
 [35e]: http://35engineering.com/wp-content/uploads/2013/07/35-color-web.png "35 Engineering"

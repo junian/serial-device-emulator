@@ -12,15 +12,7 @@
 ----
 
 > [!IMPORTANT]
-> This project is not actively maintained, a new successor is being developed. You can visit [Termission](https://github.com/junian/termission).
-
-This project is migrated from the [Google Code][googlecode] repository.
-
-## Features
-
-- Manual device control
-- Log everything
-- Auto response using C#-like script language
+> This project is not actively maintained, but should still work 100%. A new cross-platform successor is being developed. You can visit [Termission](https://github.com/junian/termission).
 
 ## Installation and Usage
 
@@ -34,9 +26,17 @@ This project is migrated from the [Google Code][googlecode] repository.
 
 If you have any further questions, please let me know.
 
+## Features
+
+- Manual device control
+- Log everything
+- Auto response using C#-like script language
+  
 ## Credits
 
 Special thanks to JB from [35 Engineering](http://35engineering.com) for sponsoring the development of this project.
+
+The original repo was on [Google Code](https://code.google.com/p/sdemu/).
 
 ## License
 
@@ -46,5 +46,4 @@ This project is licensed under [MIT License](https://github.com/junian/serial-de
 
 Made with ☕ by [Junian.dev](https://www.junian.dev).
 
-[googlecode]: https://code.google.com/p/sdemu/
 [35e]: http://35engineering.com/wp-content/uploads/2013/07/35-color-web.png "35 Engineering"

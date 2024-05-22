@@ -1,4 +1,4 @@
-# SerialDeviceEmu (SDEmu)
+# Serial Device Emulator (SDEmu)
 
 > [!IMPORTANT]
 > This project is obsolete, a new successor is being developed. You can visit [Termission](https://github.com/junian/termission).

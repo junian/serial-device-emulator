@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using FastColoredTextBoxNS;
 using Juniansoft.SDEmu.Properties;
 
-namespace Juniansoft.SDEmu
+namespace Juniansoft.SDEmu.Forms
 {
-    public partial class DeviceBot : Form
+    public partial class DeviceBotForm : Form
     {
         #region Private Variables
 
@@ -60,9 +60,10 @@ namespace Juniansoft.SDEmu
         }
         #endregion
 
-        public DeviceBot()
+        public DeviceBotForm()
         {
             InitializeComponent();
+            this.Icon = Resources.Favicon;
         }
 
         private void chkEnableBot_CheckedChanged(object sender, EventArgs e)

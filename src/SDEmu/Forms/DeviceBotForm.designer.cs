@@ -1,6 +1,6 @@
-﻿namespace Juniansoft.SDEmu
+﻿namespace Juniansoft.SDEmu.Forms
 {
-    partial class DeviceBot
+    partial class DeviceBotForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
         	this.components = new System.ComponentModel.Container();
-        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceBot));
+        	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceBotForm));
         	this.chkEnableBot = new System.Windows.Forms.CheckBox();
         	this.btnCompile = new System.Windows.Forms.Button();
         	this.lblCompiled = new System.Windows.Forms.Label();
@@ -124,7 +124,6 @@
         	this.Controls.Add(this.lblCompiled);
         	this.Controls.Add(this.btnCompile);
         	this.Controls.Add(this.chkEnableBot);
-        	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         	this.Name = "DeviceBot";
         	this.Text = "DeviceBot";
         	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DeviceBot_FormClosing);

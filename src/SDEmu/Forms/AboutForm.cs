@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Juniansoft.SDEmu.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Juniansoft.SDEmu
+namespace Juniansoft.SDEmu.Forms
 {
-    partial class AboutBox : Form
+    partial class AboutForm : Form
     {
-        public AboutBox()
+        public AboutForm()
         {
             InitializeComponent();
+            this.Icon = Resources.Favicon;
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);

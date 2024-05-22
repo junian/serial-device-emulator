@@ -1,4 +1,4 @@
-﻿namespace Juniansoft.SDEmu
+﻿namespace Juniansoft.SDEmu.Forms
 {
     partial class MainForm
     {
@@ -561,7 +561,6 @@
         	// notifyIcon
         	// 
         	this.notifyIcon.BalloonTipTitle = "SDEmu";
-        	this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
         	this.notifyIcon.Text = "SDEmu";
         	this.notifyIcon.Visible = true;
         	// 
@@ -616,7 +615,6 @@
         	this.Controls.Add(this.groupBoxDeviceActivities);
         	this.Controls.Add(this.panel1);
         	this.Controls.Add(this.mnuMain);
-        	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         	this.Location = new System.Drawing.Point(-1, -1);
         	this.MainMenuStrip = this.mnuMain;
         	this.MinimumSize = new System.Drawing.Size(640, 480);

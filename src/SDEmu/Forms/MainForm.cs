@@ -13,7 +13,7 @@ using Juniansoft.SDEmu.Configs;
 using Juniansoft.SDEmu.Properties;
 using Juniansoft.SDEmu.Utilities;
 
-namespace Juniansoft.SDEmu
+namespace Juniansoft.SDEmu.Forms
 {
     public partial class MainForm : Form
     {
@@ -340,6 +340,8 @@ namespace Juniansoft.SDEmu
         public MainForm()
         {
             InitializeComponent();
+            this.Icon = Resources.Favicon;
+            this.notifyIcon.Icon = Resources.Favicon;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -397,7 +399,7 @@ namespace Juniansoft.SDEmu
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AboutBox().ShowDialog(this);
+            new AboutForm().ShowDialog(this);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -479,7 +481,7 @@ namespace Juniansoft.SDEmu
 
         private void deviceBotToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DeviceBot().ShowDialog(this);
+            new DeviceBotForm().ShowDialog(this);
         }
         
         void BtnTestBotClick(object sender, EventArgs e)

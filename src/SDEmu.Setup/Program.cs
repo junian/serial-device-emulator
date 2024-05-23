@@ -61,11 +61,11 @@ namespace Juniansoft.SDEmu.Setup
                             arguments: "")
                         {
                             WorkingDirectory = InstallDir
-                        },
+                        }/*,
                         new ExeFileShortcut(
                             name: $"Uninstall {assembly.Product}",
                             target: "[System64Folder]msiexec.exe",
-                            arguments: "/x [ProductCode]")
+                            arguments: "/x [ProductCode]")*/
                     ),
                     new EnvironmentVariable("Path", InstallDir)
                     {
@@ -89,6 +89,12 @@ namespace Juniansoft.SDEmu.Setup
                 project.Platform = b.Value;
                 if (b.Value == Platform.arm64)
                     project.InstallerVersion = 500;
+
+                project.ControlPanelInfo.ProductIcon = Path.Combine(
+                            "..",
+                            "..",
+                            "assets",
+                            "Favicon.ico");
 
                 project.MajorUpgradeStrategy.RemoveExistingProductAfter = Step.InstallInitialize;
                 project.LicenceFile = Path.Combine(".", "LICENSE.rtf");

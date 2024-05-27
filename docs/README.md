@@ -11,8 +11,27 @@
 
 ----
 
-> [!IMPORTANT]
-> This project is not actively maintained, but should still work 100%. A new cross-platform successor is being developed. You can visit [Termission](https://github.com/junian/termission).
+> [!Note]
+> A new cross-platform successor is being developed. You can visit [Termission](https://github.com/junian/termission).
+
+## Download
+
+📦 [SerialDeviceEmulator-v1.0.4-x86.msi](https://github.com/junian/serial-device-emulator/releases/download/v1.0.4/SerialDeviceEmulator-v1.0.4-x86.msi)
+
+📦 [SerialDeviceEmulator-v1.0.4-x64.msi](https://github.com/junian/serial-device-emulator/releases/download/v1.0.4/SerialDeviceEmulator-v1.0.4-x64.msi)
+
+📦 [SerialDeviceEmulator-v1.0.4-arm64.msi](https://github.com/junian/serial-device-emulator/releases/download/v1.0.4/SerialDeviceEmulator-v1.0.4-arm64.msi)
+
+### SHA-256 Checksum
+
+```
+9045390a68fb990d47225b5e675ae260c43894f5af24adb99daf346911962817  SerialDeviceEmulator-v1.0.4-x86.msi
+377b066b8a86899c7b12d971f61bb11df8c53c98afa54f7b78032cb1870d40c7  SerialDeviceEmulator-v1.0.4-x64.msi
+aca33960051012df1dfdc44f557317f37aa6973fc5c3d3c9412ee455c990f00b  SerialDeviceEmulator-v1.0.4-arm64.msi
+```
+
+> [!Important]
+> Requires [.NET 4.6.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net462) for Windows version older than Windows 10
 
 ## Installation and Usage
 

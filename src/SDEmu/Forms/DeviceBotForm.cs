@@ -8,9 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using FastColoredTextBoxNS;
-using Juniansoft.SDEmu.Properties;
+using JunianDev.SDEmu.Properties;
 
-namespace Juniansoft.SDEmu.Forms
+namespace JunianDev.SDEmu.Forms
 {
     public partial class DeviceBotForm : Form
     {

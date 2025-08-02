@@ -4,7 +4,7 @@ using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Text;
 
-namespace Juniansoft.SDEmu
+namespace JunianDev.SDEmu
 {
     public class SDEmuScript
     {

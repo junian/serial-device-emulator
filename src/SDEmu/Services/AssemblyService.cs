@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Juniansoft.SDEmu.Services
+namespace JunianDev.SDEmu.Services
 {
     public class AssemblyService
     {

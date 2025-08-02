@@ -1,10 +1,10 @@
-﻿using Juniansoft.SDEmu.Services;
+﻿using JunianDev.SDEmu.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using WixSharp;
 
-namespace Juniansoft.SDEmu.Setup
+namespace JunianDev.SDEmu.Setup
 {
     internal class Program
     {

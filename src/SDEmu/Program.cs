@@ -1,11 +1,11 @@
-﻿using Juniansoft.SDEmu.Forms;
+﻿using JunianDev.SDEmu.Forms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 [assembly:log4net.Config.XmlConfigurator(Watch=true)]
 
-namespace Juniansoft.SDEmu
+namespace JunianDev.SDEmu
 {
     static class Program
     {

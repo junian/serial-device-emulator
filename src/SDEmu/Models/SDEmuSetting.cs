@@ -8,7 +8,7 @@
  */
 using System;
 
-namespace Juniansoft.SDEmu.Models
+namespace JunianDev.SDEmu.Models
 {
 	/// <summary>
 	/// Description of SDEmuSetting.

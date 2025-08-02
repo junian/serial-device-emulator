@@ -1,4 +1,4 @@
-﻿namespace Juniansoft.SDEmu.Forms
+﻿namespace JunianDev.SDEmu.Forms
 {
     partial class MainForm
     {
@@ -404,7 +404,7 @@
         	// 
         	// buttonRefresh
         	// 
-        	this.buttonRefresh.Image = global::Juniansoft.SDEmu.Properties.Resources.IconRefresh;
+        	this.buttonRefresh.Image = global::JunianDev.SDEmu.Properties.Resources.IconRefresh;
         	this.buttonRefresh.Location = new System.Drawing.Point(202, 16);
         	this.buttonRefresh.Name = "buttonRefresh";
         	this.buttonRefresh.Size = new System.Drawing.Size(26, 26);
@@ -425,7 +425,7 @@
         	// 
         	// buttonRun
         	// 
-        	this.buttonRun.Image = global::Juniansoft.SDEmu.Properties.Resources.IconPlay;
+        	this.buttonRun.Image = global::JunianDev.SDEmu.Properties.Resources.IconPlay;
         	this.buttonRun.Location = new System.Drawing.Point(6, 46);
         	this.buttonRun.Name = "buttonRun";
         	this.buttonRun.Size = new System.Drawing.Size(92, 53);

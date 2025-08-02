@@ -1,4 +1,4 @@
-﻿using Juniansoft.SDEmu.Properties;
+﻿using JunianDev.SDEmu.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Juniansoft.SDEmu.Forms
+namespace JunianDev.SDEmu.Forms
 {
     partial class AboutForm : Form
     {

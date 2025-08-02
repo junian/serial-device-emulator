@@ -13,10 +13,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-using Juniansoft.SDEmu.Models;
-using Juniansoft.SDEmu.Utilities;
+using JunianDev.SDEmu.Models;
+using JunianDev.SDEmu.Utilities;
 
-namespace Juniansoft.SDEmu.Configs
+namespace JunianDev.SDEmu.Configs
 {
 	/// <summary>
 	/// Description of AppSettings.

@@ -1,4 +1,4 @@
-﻿namespace Juniansoft.SDEmu.Forms
+﻿namespace JunianDev.SDEmu.Forms
 {
     partial class AboutForm
     {

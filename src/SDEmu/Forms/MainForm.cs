@@ -11,12 +11,12 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-using Juniansoft.SDEmu.Configs;
-using Juniansoft.SDEmu.Properties;
-using Juniansoft.SDEmu.Services;
-using Juniansoft.SDEmu.Utilities;
+using JunianDev.SDEmu.Configs;
+using JunianDev.SDEmu.Properties;
+using JunianDev.SDEmu.Services;
+using JunianDev.SDEmu.Utilities;
 
-namespace Juniansoft.SDEmu.Forms
+namespace JunianDev.SDEmu.Forms
 {
     public partial class MainForm : Form
     {

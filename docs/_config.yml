@@ -5,5 +5,16 @@ google_adsense: ca-pub-1135979461412092
 google_analytics: G-MKQK789F6L
 theme: jekyll-theme-cayman
 
+markdown: CommonMarkGhPages
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+
+plugins:
+  - jekyll-commonmark-ghpages
+
+whitelist:
+  - jekyll-commonmark-ghpages
+
 github:
   private: true

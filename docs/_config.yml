@@ -32,6 +32,11 @@ whitelist:
   - jekyll-seo-tag
   - jekyll-commonmark-ghpages
 
+readme_index:
+  enabled:          true
+  remove_originals: true
+  with_frontmatter: false
+ 
 # <!-- just-the-docs start />
 
 # Set a path/url to a logo that will be displayed instead of the title

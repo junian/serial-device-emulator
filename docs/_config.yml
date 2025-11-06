@@ -1,8 +1,8 @@
 title: Serial Device Emulator
 description: Scriptable COM Port Data Emulator Built with C#
 google_adsense: ca-pub-1135979461412092
-show_downloads: false
 google_analytics: G-MKQK789F6L
+show_downloads: false
 # theme: just-the-docs
 remote_theme: junian/jekyll-jtdocs
 

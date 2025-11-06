@@ -14,7 +14,6 @@ Develop your software without the real Serial Port device through C#-Script Emul
 
 ----
 
-> [!Note]
 > A new cross-platform successor is being developed. You can visit [Termission](https://github.com/junian/termission).
 
 ## Download
@@ -33,7 +32,6 @@ Develop your software without the real Serial Port device through C#-Script Emul
 aca33960051012df1dfdc44f557317f37aa6973fc5c3d3c9412ee455c990f00b  SerialDeviceEmulator-v1.0.4-arm64.msi
 ```
 
-> [!Important]
 > Requires [.NET 4.6.2](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net462) for Windows version older than Windows 10
 
 ## Installation and Usage
@@ -63,8 +61,6 @@ The original repo was on [Google Code](https://code.google.com/p/sdemu/).
 ## License
 
 This project is licensed under [MIT License](https://github.com/junian/serial-device-emulator/blob/master/LICENSE).
-
----
 
 Made with ☕ by [Junian.dev](https://www.junian.dev).
 

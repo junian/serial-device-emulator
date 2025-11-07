@@ -14,7 +14,9 @@ Develop your software without the real Serial Port device through C#-Script Emul
 
 ----
 
+<!--
 > A new cross-platform successor is being developed. You can visit [Termission](https://github.com/junian/termission).
+-->
 
 ## Download
 
@@ -26,7 +28,7 @@ Develop your software without the real Serial Port device through C#-Script Emul
 
 ### SHA-256 Checksum
 
-```
+```bash
 9045390a68fb990d47225b5e675ae260c43894f5af24adb99daf346911962817  SerialDeviceEmulator-v1.0.4-x86.msi
 377b066b8a86899c7b12d971f61bb11df8c53c98afa54f7b78032cb1870d40c7  SerialDeviceEmulator-v1.0.4-x64.msi
 aca33960051012df1dfdc44f557317f37aa6973fc5c3d3c9412ee455c990f00b  SerialDeviceEmulator-v1.0.4-arm64.msi

@@ -165,13 +165,13 @@ callouts:
 # Google Analytics Tracking (optional)
 # Supports a CSV of tracking ID strings (eg. "UA-1234567-89,G-1AB234CDE5")
 # Note: the main Just the Docs site does *not* use Google Analytics.
-ga_tracking: G-MKQK789F6L
+ga_tracking: G-BJ58GF34YZ
 # ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
 google_adsense: ca-pub-1135979461412092
 
 # Microsoft Clarity Tracking (optional)
-microsoft_clarity: vtz8klhhw6
+microsoft_clarity: vqbj1zi6a5
 
 # Disqus Comments
 # disqus:

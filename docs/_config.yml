@@ -1,8 +1,13 @@
 title: Serial Device Emulator
 description: Scriptable COM Port Data Emulator Built with C#
 show_downloads: false
+google_analytics: G-BJ58GF34YZ
 # theme: just-the-docs
 remote_theme: junian/jekyll-jtdocs
+url: "https://www.junian.dev" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/serial-device-emulator" # the subpath of your site, e.g. /blog
+repository: junian/serial-device-emulator # for github-metadata
+enforce_canonical_domain: true
 
 markdown: CommonMarkGhPages
 commonmark:

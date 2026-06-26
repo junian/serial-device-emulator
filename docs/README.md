@@ -6,9 +6,11 @@
 
 Develop your software without the real Serial Port device through C#-Script Emulation. Works for RS-232 and RS-485 devices.
 
-[![Serial Device Emulator on GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white&style=for-the-badge "Serial Device Emulator on GitHub")](https://github.com/junian/serial-device-emulator/)
-[![Serial Device Emulator latest version on GitHub](https://img.shields.io/github/release/junian/serial-device-emulator.svg?style=for-the-badge "Serial Device Emulator latest version on GitHub")](https://github.com/junian/serial-device-emulator/releases)
-[![Serial Device Emulator total downloads on GitHub](https://img.shields.io/github/downloads/junian/serial-device-emulator/total.svg?style=for-the-badge "Serial Device Emulator total downloads on GitHub")](https://github.com/junian/serial-device-emulator/releases)
+<p>
+    <a href="https://github.com/junian/serial-device-emulator/"><img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&amp;logoColor=white&amp;style=for-the-badge" alt="Serial Device Emulator on GitHub" title="Serial Device Emulator on GitHub"></a>
+    <a href="https://github.com/junian/serial-device-emulator/releases"><img src="https://img.shields.io/github/release/junian/serial-device-emulator.svg?style=for-the-badge" alt="Serial Device Emulator latest version on GitHub" title="Serial Device Emulator latest version on GitHub"></a>
+    <a href="https://github.com/junian/serial-device-emulator/releases"><img src="https://img.shields.io/github/downloads/junian/serial-device-emulator/total.svg?style=for-the-badge" alt="Serial Device Emulator total downloads on GitHub" title="Serial Device Emulator total downloads on GitHub"></a>
+</p>
 
 </div>
 
